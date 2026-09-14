@@ -1,0 +1,15 @@
+{
+  "component_name": "build_forecast_targets",
+  "purpose": "Construct verification-side observed means for three non-overlapping future 30-day 2 m temperature windows.",
+  "required_inputs": ["canonical observation CSV files", "forecast_state.json", "output path"],
+  "optional_inputs": ["daily_minimum_hours", "window_minimum_valid_days"],
+  "parameters": {"daily_minimum_hours": "default 18", "window_minimum_valid_days": "default 27 of 30"},
+  "outputs": ["forecast_targets.json"],
+  "data_formats": ["canonical CSV", "forecast-state JSON", "target JSON"],
+  "expected_units": {"temperature": "degC", "depth": "m", "dates": "UTC calendar dates"},
+  "failure_conditions": ["forecast state lacks a complete daily state date", "forecast state site/target/time convention does not match daily Windermere South Basin 2 m temperature", "duplicate canonical target timestamp", "invalid completeness threshold", "malformed timestamp"],
+  "provenance_generated": ["forecast-state hash", "canonical input hashes", "source dataset/file identifiers", "window dates", "daily/window completeness rules", "verification-only role"],
+  "scientific_assumptions": ["month_1 is lead days +1..+30", "month_2 is +31..+60", "month_3 is +61..+90", "windows are anchored after the last usable daily state date", "at least 27 valid daily means are required", "no imputation", "target output must not be passed to forecasting components"],
+  "entry_point": "components/build_forecast_targets/run.py",
+  "manifest_status": "internal portability aid; not an official LifeWatch manifest"
+}

@@ -10,9 +10,13 @@ from predict_lakes.ingest import ingest_observations
 from predict_lakes.standardise import read_observations, write_canonical
 from predict_lakes.target_audit import aggregate_daily, audit_target
 from predict_lakes.forecast_state import build_forecast_state
+from predict_lakes.forecast_targets import build_forecast_targets
 
 
 class ObservationTests(unittest.TestCase):
+    def _state(self, state_date, issue_time):
+        return {"site": {"lake_id": "windermere", "basin": "south"}, "target": {"variable": "water_temperature", "depth_m": 2.0, "unit": "degC", "resolution": "daily", "calendar": "UTC"}, "last_complete_daily_state_date": state_date, "forecast_issue_time": issue_time, "availability_mode": "observation_time_proxy"}
+
     def _canonical(self, directory, rows):
         path = Path(directory) / "canonical.csv"
         fields = ["lake_id", "basin", "observation_time", "data_available_time", "variable", "depth_m", "value", "unit", "source_dataset", "source_file", "source_row", "qc_status"]
@@ -84,6 +88,57 @@ class ObservationTests(unittest.TestCase):
             state, history = build_forecast_state([path], "2020-01-01T18:00:00+00:00")
             self.assertEqual(len(history), 1)
             self.assertEqual(history[0]["first_legal_observation_time"], "2020-01-01T00:59:00+00:00")
+
+    def test_target_windows_anchor_after_state_date_and_do_not_overlap(self):
+        from datetime import datetime, timedelta, timezone
+        start = datetime(2020, 7, 15, tzinfo=timezone.utc)
+        with tempfile.TemporaryDirectory() as directory:
+            rows = []
+            for day in range(90):
+                value = 1.0 + day // 30
+                rows.extend({"observation_time": (start + timedelta(days=day, hours=hour)).isoformat(), "value": value} for hour in range(18))
+            path = self._canonical(directory, rows)
+            state = self._state("2020-07-14", "2020-07-15T12:00:00+00:00")
+            result = build_forecast_targets([path], state)
+            windows = result["targets"]
+            self.assertEqual((windows[0]["nominal_start_date"], windows[0]["nominal_end_date"]), ("2020-07-15", "2020-08-13"))
+            self.assertEqual((windows[1]["nominal_start_date"], windows[1]["nominal_end_date"]), ("2020-08-14", "2020-09-12"))
+            self.assertEqual((windows[2]["nominal_start_date"], windows[2]["nominal_end_date"]), ("2020-09-13", "2020-10-12"))
+            self.assertEqual([window["observed_mean_temperature"] for window in windows], [1.0, 2.0, 3.0])
+
+    def test_target_window_requires_27_daily_means_without_imputation(self):
+        from datetime import datetime, timedelta, timezone
+        start = datetime(2020, 1, 2, tzinfo=timezone.utc)
+        with tempfile.TemporaryDirectory() as directory:
+            rows = []
+            for day in range(27):
+                rows.extend({"observation_time": (start + timedelta(days=day, hours=hour)).isoformat(), "value": 7.0} for hour in range(18))
+            path = self._canonical(directory, rows)
+            state = self._state("2020-01-01", "2020-01-02T12:00:00+00:00")
+            target = build_forecast_targets([path], state)["targets"][0]
+            self.assertTrue(target["is_valid"])
+            self.assertEqual(target["valid_days"], 27)
+            self.assertEqual(target["completeness_fraction"], 0.9)
+            self.assertEqual(target["observed_mean_temperature"], 7.0)
+
+    def test_future_changes_affect_targets_but_not_forecast_state(self):
+        from datetime import datetime, timedelta, timezone
+        start = datetime(2020, 1, 1, tzinfo=timezone.utc)
+        with tempfile.TemporaryDirectory() as directory:
+            def rows(future_value):
+                result = [{"observation_time": (start + timedelta(hours=hour)).isoformat(), "value": 5.0} for hour in range(18)]
+                for day in range(1, 91):
+                    result.extend({"observation_time": (start + timedelta(days=day, hours=hour)).isoformat(), "value": future_value} for hour in range(18))
+                return result
+            path = self._canonical(directory, rows(10.0))
+            state_a, history_a = build_forecast_state([path], "2020-01-01T23:00:00+00:00")
+            targets_a = build_forecast_targets([path], state_a)
+            self._canonical(directory, rows(100.0))
+            state_b, history_b = build_forecast_state([path], "2020-01-01T23:00:00+00:00")
+            targets_b = build_forecast_targets([path], state_b)
+            self.assertEqual((state_a, history_a), (state_b, history_b))
+            self.assertNotEqual(targets_a["targets"][0]["observed_mean_temperature"], targets_b["targets"][0]["observed_mean_temperature"])
+            self.assertTrue(targets_a["not_for_forecast_model_input"])
     def test_daily_aggregation_requires_explicit_completeness(self):
         from datetime import datetime, timedelta, timezone
         start = datetime(2020, 1, 1, tzinfo=timezone.utc)

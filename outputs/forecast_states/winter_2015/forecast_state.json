@@ -34,9 +34,10 @@
     "source_files": [
       "SBAS_2012_2013_2014_2015.csv"
     ],
-    "input_sha256": {
-      "data\\interim\\e68063b9-canonical.csv": "36829d0a10bf519a3a84e302e7b6d9f4b83b760f314dd0256e932d330935a7f1"
-    },
+    "canonical_inputs": [
+      "data\\interim\\e68063b9-canonical.csv"
+    ],
+    "legal_observation_slice_sha256": "8adc2b3d24c47b38dfce08cf25ae1f3de0ccd767e6a8f0118f529154e8b1b17d",
     "source_timestamps_preserved": true,
     "data_available_time_note": "Historical archive values are blank/unknown; no availability timestamp was fabricated."
   }

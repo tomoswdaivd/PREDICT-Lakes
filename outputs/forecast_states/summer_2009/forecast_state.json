@@ -34,9 +34,10 @@
     "source_files": [
       "WSB_2008_2009_2010_2011.csv"
     ],
-    "input_sha256": {
-      "data\\interim\\bd37710e-canonical.csv": "2001b4185119fde3d1d8f2dd15d958df8cce94521c60e4afb96e7e928f07d7c5"
-    },
+    "canonical_inputs": [
+      "data\\interim\\bd37710e-canonical.csv"
+    ],
+    "legal_observation_slice_sha256": "608401d942bc3524cd1a260b40767ab86ea50c13016ea174a73d40459d18afcb",
     "source_timestamps_preserved": true,
     "data_available_time_note": "Historical archive values are blank/unknown; no availability timestamp was fabricated."
   }

@@ -8,7 +8,7 @@
   "data_formats": ["canonical CSV input", "JSON", "CSV"],
   "expected_units": {"temperature": "degC", "time": "UTC", "depth": "m"},
   "failure_conditions": ["naive or malformed issue time", "invalid completeness threshold", "duplicate target timestamp", "unknown data availability in data_available_time mode", "malformed canonical timestamp"],
-  "provenance_generated": ["issue time", "availability mode and assumption", "input hashes", "source dataset/file identifiers", "last legal raw observation", "daily completeness rule"],
+  "provenance_generated": ["issue time", "availability mode and assumption", "legal-observation-slice hash", "source dataset/file identifiers", "last legal raw observation", "daily completeness rule"],
   "scientific_assumptions": ["target is Windermere South Basin 2 m water temperature", "historical proxy mode uses observation_time as an explicitly labelled availability proxy", "no imputation or model-specific features are added", "future observation times are never used"],
   "entry_point": "components/build_forecast_state/run.py"
 }

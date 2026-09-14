@@ -12,11 +12,14 @@ Each local component has a single CLI entry point, ordinary Python-callable core
 | `standardise_observations` | canonicalise observations and inventory source | source CSV, dataset ID, optional availability time | canonical long CSV and JSON inventory |
 | `target_depth_audit` | assess common near-surface target | canonical 1 m/2 m observation CSVs, date range, completeness threshold | JSON metrics summary, daily comparison CSV, PNG plot |
 | `build_forecast_state` | create issue-time-limited model input | canonical observations, issue time, availability mode, completeness threshold | JSON state and daily-history CSV |
+| `build_forecast_targets` | construct verification-side observed targets | canonical observations, forecast-state record, daily/window completeness thresholds | JSON containing three non-overlapping 30-day observed target windows |
 | `forecast` | planned | forecast state and model configuration | planned |
 | `verify_forecast` | planned | forecasts and later targets | planned |
 | `report` | planned | standard outputs | planned |
 
 The JSON files in each component directory are internal portability aids, not official LifeWatch manifests. A future wrapper can map their explicit inputs, outputs, parameters, and metadata to the formal builder representation (including any verified `annotation.json` schema) without moving scientific logic into R. Relative paths are accepted at the CLI; no notebook state or interactive input is required.
+
+The intended branches are explicitly separate: `standardise_observations -> build_forecast_state -> forecast` supplies only issue-time-legal information, while `standardise_observations -> build_forecast_targets -> verify_forecast` supplies future observations only to verification. `build_forecast_targets` output must not be connected to the forecast component input.
 
 ## Unresolved compatibility questions
 

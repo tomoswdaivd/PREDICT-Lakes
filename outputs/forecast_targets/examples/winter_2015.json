@@ -1,0 +1,111 @@
+{
+  "component": "build_forecast_targets",
+  "workflow_role": "verification_side_only",
+  "forecast_issue_time": "2015-02-15T12:00:00+00:00",
+  "forecast_state_date": "2015-02-14",
+  "target_definition": "three non-overlapping future 30-day mean 2 m water-temperature lead windows anchored after forecast_state_date",
+  "window_completeness_rule": "at least 27 of 30 valid daily means (each based on at least 18 hourly observations); no imputation",
+  "not_for_forecast_model_input": true,
+  "targets": [
+    {
+      "target_name": "month_1",
+      "lead_days": {
+        "start": 1,
+        "end": 30
+      },
+      "nominal_start_date": "2015-02-15",
+      "nominal_end_date": "2015-03-16",
+      "expected_days": 30,
+      "valid_days": 30,
+      "completeness_fraction": 1.0,
+      "is_valid": true,
+      "observed_mean_temperature": 4.881917708333333,
+      "unit": "degC",
+      "site": {
+        "lake_id": "windermere",
+        "basin": "south"
+      },
+      "depth_m": 2.0,
+      "source_dataset_ids": [
+        "e68063b9-2e52-44df-8b6f-a3deb37b76cb"
+      ],
+      "source_files": [
+        "SBAS_2012_2013_2014_2015.csv"
+      ]
+    },
+    {
+      "target_name": "month_2",
+      "lead_days": {
+        "start": 31,
+        "end": 60
+      },
+      "nominal_start_date": "2015-03-17",
+      "nominal_end_date": "2015-04-15",
+      "expected_days": 30,
+      "valid_days": 30,
+      "completeness_fraction": 1.0,
+      "is_valid": true,
+      "observed_mean_temperature": 6.459014111111111,
+      "unit": "degC",
+      "site": {
+        "lake_id": "windermere",
+        "basin": "south"
+      },
+      "depth_m": 2.0,
+      "source_dataset_ids": [
+        "e68063b9-2e52-44df-8b6f-a3deb37b76cb"
+      ],
+      "source_files": [
+        "SBAS_2012_2013_2014_2015.csv"
+      ]
+    },
+    {
+      "target_name": "month_3",
+      "lead_days": {
+        "start": 61,
+        "end": 90
+      },
+      "nominal_start_date": "2015-04-16",
+      "nominal_end_date": "2015-05-15",
+      "expected_days": 30,
+      "valid_days": 30,
+      "completeness_fraction": 1.0,
+      "is_valid": true,
+      "observed_mean_temperature": 9.347562819444445,
+      "unit": "degC",
+      "site": {
+        "lake_id": "windermere",
+        "basin": "south"
+      },
+      "depth_m": 2.0,
+      "source_dataset_ids": [
+        "e68063b9-2e52-44df-8b6f-a3deb37b76cb"
+      ],
+      "source_files": [
+        "SBAS_2012_2013_2014_2015.csv"
+      ]
+    }
+  ],
+  "provenance": {
+    "forecast_state_input": "outputs\\forecast_states\\winter_2015\\forecast_state.json",
+    "forecast_state_sha256": "798fab5dea77eb549841732862ee67fffd10fd840ca51f28184a95f71bf2d090",
+    "forecast_state_availability_mode": "observation_time_proxy",
+    "canonical_input_sha256": {
+      "data\\interim\\bd37710e-canonical.csv": "2001b4185119fde3d1d8f2dd15d958df8cce94521c60e4afb96e7e928f07d7c5",
+      "data\\interim\\e68063b9-canonical.csv": "36829d0a10bf519a3a84e302e7b6d9f4b83b760f314dd0256e932d330935a7f1",
+      "data\\interim\\e1b6e387-canonical.csv": "f39af534992cf085e1c252281a7703a479ae7de8395b525e1b00418edb4822fe"
+    },
+    "source_dataset_ids": [
+      "bd37710e-6a53-49f0-9a07-6973408a3342",
+      "e1b6e387-1bd6-444a-8de9-035df0b8baec",
+      "e68063b9-2e52-44df-8b6f-a3deb37b76cb"
+    ],
+    "source_files": [
+      "SBAS_2012_2013_2014_2015.csv",
+      "WSB_2008_2009_2010_2011.csv",
+      "sbas-2016_2017_2018.csv"
+    ],
+    "source_timestamps_preserved": true,
+    "separation_note": "Future target observations are verification data and are not part of forecast state or forecasting inputs."
+  }
+}

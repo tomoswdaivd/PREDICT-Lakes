@@ -33,24 +33,17 @@ def _issue_time(value: str | datetime) -> datetime:
     return value.astimezone(timezone.utc)
 
 
-def _sha256(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as handle:
-        for block in iter(lambda: handle.read(1024 * 1024), b""):
-            digest.update(block)
-    return digest.hexdigest()
-
-
 def _read_legal_observations(paths: Iterable[str | Path], issue_time: datetime, availability_mode: str) -> tuple[dict[datetime, float], dict[str, Any]]:
     if availability_mode not in {"observation_time_proxy", "data_available_time"}:
         raise ValueError("availability_mode must be observation_time_proxy or data_available_time")
     observations: dict[datetime, float] = {}
     source_datasets: set[str] = set()
     source_files: set[str] = set()
-    input_hashes: dict[str, str] = {}
+    canonical_inputs: list[str] = []
+    legal_provenance_rows: list[dict[str, str]] = []
     for input_path in paths:
         path = Path(input_path)
-        input_hashes[str(path)] = _sha256(path)
+        canonical_inputs.append(str(path))
         with path.open(newline="", encoding="utf-8") as handle:
             for row in csv.DictReader(handle):
                 if any(row.get(key) != value for key, value in TARGET.items()):
@@ -70,7 +63,10 @@ def _read_legal_observations(paths: Iterable[str | Path], issue_time: datetime, 
                 observations[observation_time] = float(row["value"])
                 source_datasets.add(row.get("source_dataset", ""))
                 source_files.add(row.get("source_file", ""))
-    return observations, {"source_dataset_ids": sorted(source_datasets), "source_files": sorted(source_files), "input_sha256": input_hashes}
+                legal_provenance_rows.append({key: row.get(key, "") for key in ("observation_time", "data_available_time", "value", "source_dataset", "source_file", "source_row")})
+    legal_payload = json.dumps(sorted(legal_provenance_rows, key=lambda row: (row["observation_time"], row["source_dataset"], row["source_row"])), sort_keys=True, separators=(",", ":")).encode("utf-8")
+    legal_hash = hashlib.sha256(legal_payload).hexdigest()
+    return observations, {"source_dataset_ids": sorted(source_datasets), "source_files": sorted(source_files), "canonical_inputs": canonical_inputs, "legal_observation_slice_sha256": legal_hash}
 
 
 def _daily_history(observations: dict[datetime, float], minimum_hours: int) -> list[dict[str, Any]]:

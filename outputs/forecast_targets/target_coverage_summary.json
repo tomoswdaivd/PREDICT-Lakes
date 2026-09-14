@@ -1,0 +1,35 @@
+{
+  "candidate_definition": "each valid 2 m daily state date from 2008-01-01 through 2018-12-31",
+  "target_definition": "month_1=days +1..+30; month_2=+31..+60; month_3=+61..+90 after forecast_state_date",
+  "daily_completeness_rule": "at least 18 distinct valid hourly observations per UTC calendar day; no imputation",
+  "window_completeness_rule": "at least 27 of 30 valid daily means; no imputation",
+  "n_candidate_state_dates": 4003,
+  "nested_support_counts": {
+    "month_1": 3949,
+    "months_1_2": 3889,
+    "months_1_2_3": 3829
+  },
+  "exclusive_support_counts": {
+    "month_1_only": 60,
+    "months_1_2_only": 60,
+    "all_three": 3829
+  },
+  "provenance": {
+    "canonical_input_sha256": {
+      "data\\interim\\bd37710e-canonical.csv": "2001b4185119fde3d1d8f2dd15d958df8cce94521c60e4afb96e7e928f07d7c5",
+      "data\\interim\\e68063b9-canonical.csv": "36829d0a10bf519a3a84e302e7b6d9f4b83b760f314dd0256e932d330935a7f1",
+      "data\\interim\\e1b6e387-canonical.csv": "f39af534992cf085e1c252281a7703a479ae7de8395b525e1b00418edb4822fe"
+    },
+    "source_dataset_ids": [
+      "bd37710e-6a53-49f0-9a07-6973408a3342",
+      "e1b6e387-1bd6-444a-8de9-035df0b8baec",
+      "e68063b9-2e52-44df-8b6f-a3deb37b76cb"
+    ],
+    "source_files": [
+      "SBAS_2012_2013_2014_2015.csv",
+      "WSB_2008_2009_2010_2011.csv",
+      "sbas-2016_2017_2018.csv"
+    ],
+    "source_timestamps_preserved": true
+  }
+}

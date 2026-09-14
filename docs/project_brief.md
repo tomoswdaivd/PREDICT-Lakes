@@ -43,4 +43,14 @@ Aggregation issue: the 2008-2011 release contains many timestamps at minute :59 
 
 `build_forecast_state` creates the model-agnostic observed 2 m daily history available at an explicit forecast issue timestamp. Historical hindcasts use `availability_mode=observation_time_proxy`: because true historical `data_available_time` is unknown, an observation is eligible only when `observation_time <= forecast_issue_time`. This is an explicitly labelled pseudo-operational assumption, not a reconstruction of actual historical operational availability.
 
-The component preserves source timestamps, excludes later observations before applying the daily completeness rule, and does not turn an intraday partial day into a state unless that cutoff-limited day has at least 18 valid observations. The state records the issue time, last legal raw observation time, last eligible daily date, source identifiers and input hashes. A future `data_available_time` mode is supported in the interface and will require known availability at or before the issue time.
+The component preserves source timestamps, excludes later observations before applying the daily completeness rule, and does not turn an intraday partial day into a state unless that cutoff-limited day has at least 18 valid observations. The state records the issue time, last legal raw observation time, last eligible daily date, source identifiers and a hash of only the legally available observation slice. A future `data_available_time` mode is supported in the interface and will require known availability at or before the issue time.
+
+## Forecast-target semantics
+
+The primary targets are three non-overlapping future 30-day means of 2 m water temperature: `month_1` is lead days +1 through +30, `month_2` is +31 through +60, and `month_3` is +61 through +90. Lead days begin after `last_complete_daily_state_date`, not after the raw forecast issue timestamp. These are fixed lead-time windows, not calendar months, cumulative means, or single target days.
+
+Each target requires at least 27 of its 30 expected daily means (90% completeness). Each daily mean must first satisfy the 18-hour rule. Up to three missing days are tolerated to retain windows affected by short gaps while ensuring that the window mean represents nearly the full interval; missing days are not imputed. The target output records actual valid-day counts and completeness.
+
+`build_forecast_targets` is verification-side only. Future observed temperatures are deliberately excluded from `build_forecast_state` and from forecasting inputs. The target builder consumes the state date only to define lead windows and is run independently against observations that occur after that date.
+
+Across 4,003 valid candidate state dates in 2008-2018, 3,949 support `month_1`, 3,889 support both months 1-2, and 3,829 support all three windows under the 27-of-30 rule. These are nested counts; exclusively, 60 dates support month 1 but not month 2, 60 support months 1-2 but not all three, and 3,829 support all three.

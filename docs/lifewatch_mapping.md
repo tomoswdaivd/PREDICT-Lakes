@@ -10,6 +10,7 @@ Each local component has a single CLI entry point, ordinary Python-callable core
 | --- | --- | --- | --- |
 | `ingest_observations` | acquire/register observations | URL or local source, dataset ID, paths, licence | source-preserving raw file and JSON provenance manifest |
 | `standardise_observations` | canonicalise observations and inventory source | source CSV, dataset ID, optional availability time | canonical long CSV and JSON inventory |
+| `target_depth_audit` | assess common near-surface target | canonical 1 m/2 m observation CSVs, date range, completeness threshold | JSON metrics summary, daily comparison CSV, PNG plot |
 | `build_forecast_state` | planned | issue time and canonical observations | planned |
 | `forecast` | planned | forecast state and model configuration | planned |
 | `verify_forecast` | planned | forecasts and later targets | planned |

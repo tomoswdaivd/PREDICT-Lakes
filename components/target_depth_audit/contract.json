@@ -1,0 +1,14 @@
+{
+  "component_name": "target_depth_audit",
+  "purpose": "Assess whether 2 m water temperature adequately represents 1 m during their common historical period.",
+  "required_inputs": ["canonical observation CSV files", "output directory", "plot path"],
+  "optional_inputs": ["start", "end", "minimum_hours"],
+  "parameters": {"start": "ISO-8601 UTC timestamp", "end": "ISO-8601 UTC timestamp", "minimum_hours": "minimum distinct valid hourly observations per depth per UTC day"},
+  "outputs": ["JSON summary", "daily comparison CSV", "PNG time-series/scatter plot"],
+  "data_formats": ["canonical CSV input", "JSON", "CSV", "PNG"],
+  "expected_units": {"temperature": "degC", "time": "UTC"},
+  "failure_conditions": ["duplicate depth/timestamp", "malformed canonical input", "missing required depth series", "plot dependency unavailable"],
+  "provenance_generated": ["audit period", "completeness rule", "hourly alignment counts", "comparison metrics", "seasonal/year groups", "warmest-decile definition"],
+  "scientific_assumptions": ["daily means use no imputation", "warmest observations are defined by the 2 m daily-temperature 90th percentile", "the audit does not infer forecast skill"],
+  "entry_point": "components/target_depth_audit/run.py"
+}

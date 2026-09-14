@@ -1,0 +1,203 @@
+{
+  "audit_period": {
+    "start": "2008-01-01T01:00:00+00:00",
+    "end": "2016-01-01T00:00:00+00:00"
+  },
+  "daily_completeness_rule": "at least 18 distinct valid hourly observations at each depth per UTC calendar day; no imputation",
+  "hourly": {
+    "expected_timestamps_on_exact_hour_grid": 70128,
+    "valid_source_observations_1m": 66069,
+    "valid_source_observations_2m": 69823,
+    "source_row_missing_values_1m": 4059,
+    "source_row_missing_values_2m": 305,
+    "matched_source_timestamps": 66069,
+    "unmatched_valid_source_1m": 0,
+    "unmatched_valid_source_2m": 3754,
+    "exact_hour_grid_valid_1m": 48725,
+    "exact_hour_grid_valid_2m": 52479,
+    "exact_hour_grid_missing_1m": 21403,
+    "exact_hour_grid_missing_2m": 17649,
+    "source_timestamp_minute_counts": {
+      "0": 52479,
+      "59": 17344
+    },
+    "note": "The exact-hour grid is diagnostic only; source timestamps at :59 are retained and matched exactly between depths."
+  },
+  "daily": {
+    "eligible_1m_days": 2751,
+    "eligible_2m_days": 2907,
+    "matched_days": 2751
+  },
+  "comparison": {
+    "n": 2751,
+    "bias_1m_minus_2m": 0.024260159817224743,
+    "mae": 0.06338818702376453,
+    "rmse": 0.14838705145821127,
+    "correlation": 0.9996170638282648
+  },
+  "difference_distribution": {
+    "min": -0.3984041666666669,
+    "p01": -0.16405104166666606,
+    "p05": -0.0839326666666671,
+    "median": -0.0070704166666661905,
+    "p95": 0.2349120833333327,
+    "p99": 0.7284356249999995,
+    "max": 1.650466250000001,
+    "sd": 0.14639044260505724
+  },
+  "by_month": {
+    "01": {
+      "n": 246,
+      "bias_1m_minus_2m": -0.02492502516348527,
+      "mae": 0.032365152534759,
+      "rmse": 0.050021961565663235,
+      "correlation": 0.9989878764518014
+    },
+    "02": {
+      "n": 226,
+      "bias_1m_minus_2m": -0.017663535951327445,
+      "mae": 0.030550616334808264,
+      "rmse": 0.04849157841348125,
+      "correlation": 0.9977422180035311
+    },
+    "03": {
+      "n": 248,
+      "bias_1m_minus_2m": 0.001658700268817209,
+      "mae": 0.04425467573924731,
+      "rmse": 0.09716922908247515,
+      "correlation": 0.9976176085610674
+    },
+    "04": {
+      "n": 230,
+      "bias_1m_minus_2m": 0.05733204053030309,
+      "mae": 0.08174366888998683,
+      "rmse": 0.18071375904770323,
+      "correlation": 0.9967373517517144
+    },
+    "05": {
+      "n": 248,
+      "bias_1m_minus_2m": 0.07337495564516129,
+      "mae": 0.11080129469086024,
+      "rmse": 0.22775931276163092,
+      "correlation": 0.9955112746220649
+    },
+    "06": {
+      "n": 239,
+      "bias_1m_minus_2m": 0.13102236576011161,
+      "mae": 0.14105115585774067,
+      "rmse": 0.2893412118737345,
+      "correlation": 0.9885982632127642
+    },
+    "07": {
+      "n": 243,
+      "bias_1m_minus_2m": 0.09812073379392414,
+      "mae": 0.10563250334124909,
+      "rmse": 0.22190779692642779,
+      "correlation": 0.9953575611462135
+    },
+    "08": {
+      "n": 217,
+      "bias_1m_minus_2m": 0.02250921878428803,
+      "mae": 0.03680429174895766,
+      "rmse": 0.06617259790699288,
+      "correlation": 0.9981468882997909
+    },
+    "09": {
+      "n": 210,
+      "bias_1m_minus_2m": 0.0262481626984128,
+      "mae": 0.05097684126984129,
+      "rmse": 0.09150032147896509,
+      "correlation": 0.9974200545605193
+    },
+    "10": {
+      "n": 217,
+      "bias_1m_minus_2m": -0.02331207231349766,
+      "mae": 0.03544841639951913,
+      "rmse": 0.05735264238580774,
+      "correlation": 0.9991353845319525
+    },
+    "11": {
+      "n": 210,
+      "bias_1m_minus_2m": -0.04017929781746028,
+      "mae": 0.04113075813492055,
+      "rmse": 0.06158035922730312,
+      "correlation": 0.9992112382956437
+    },
+    "12": {
+      "n": 217,
+      "bias_1m_minus_2m": -0.03220934172343554,
+      "mae": 0.03621360862051695,
+      "rmse": 0.04874613512032026,
+      "correlation": 0.9995186851730957
+    }
+  },
+  "by_year": {
+    "2008": {
+      "n": 366,
+      "bias_1m_minus_2m": 0.01984530888176133,
+      "mae": 0.039305055416963657,
+      "rmse": 0.10511522798792804,
+      "correlation": 0.9997694557707105
+    },
+    "2009": {
+      "n": 365,
+      "bias_1m_minus_2m": 0.030279955251141563,
+      "mae": 0.046007190867579865,
+      "rmse": 0.14069648502892398,
+      "correlation": 0.9996587072985094
+    },
+    "2010": {
+      "n": 355,
+      "bias_1m_minus_2m": 0.0037535584493124984,
+      "mae": 0.06904158756007721,
+      "rmse": 0.14308493546513076,
+      "correlation": 0.9996946464226842
+    },
+    "2011": {
+      "n": 365,
+      "bias_1m_minus_2m": 0.007239529223744353,
+      "mae": 0.08518195958904111,
+      "rmse": 0.13152062270873552,
+      "correlation": 0.9996900060603816
+    },
+    "2012": {
+      "n": 365,
+      "bias_1m_minus_2m": 0.01818387807245863,
+      "mae": 0.06551350798113438,
+      "rmse": 0.14045021230076826,
+      "correlation": 0.9995334145037384
+    },
+    "2013": {
+      "n": 363,
+      "bias_1m_minus_2m": 0.03757651912903743,
+      "mae": 0.07698735185351531,
+      "rmse": 0.1911500165665993,
+      "correlation": 0.9995172286381444
+    },
+    "2014": {
+      "n": 365,
+      "bias_1m_minus_2m": 0.03183783333333335,
+      "mae": 0.05233233789954345,
+      "rmse": 0.11125772441398392,
+      "correlation": 0.999811628386721
+    },
+    "2015": {
+      "n": 207,
+      "bias_1m_minus_2m": 0.06063280394524958,
+      "mae": 0.08039278381642502,
+      "rmse": 0.22779002988698677,
+      "correlation": 0.9988754691574395
+    }
+  },
+  "warmest_10_percent_by_2m": {
+    "definition": "daily matched observations at or above the 90th percentile of daily 2 m temperature",
+    "threshold_2m": 17.705105416666665,
+    "metrics": {
+      "n": 276,
+      "bias_1m_minus_2m": 0.09684632699275371,
+      "mae": 0.10860712107487917,
+      "rmse": 0.213725835124211,
+      "correlation": 0.9895459989968026
+    }
+  }
+}

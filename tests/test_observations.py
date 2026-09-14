@@ -8,9 +8,32 @@ import sys
 sys.path.insert(0, str(Path(__file__).parents[1] / "src"))
 from predict_lakes.ingest import ingest_observations
 from predict_lakes.standardise import read_observations, write_canonical
+from predict_lakes.target_audit import aggregate_daily, audit_target
 
 
 class ObservationTests(unittest.TestCase):
+    def test_daily_aggregation_requires_explicit_completeness(self):
+        from datetime import datetime, timedelta, timezone
+        start = datetime(2020, 1, 1, tzinfo=timezone.utc)
+        series = {1.0: {start + timedelta(hours=i): 1.0 for i in range(18)}, 2.0: {start + timedelta(hours=i): 2.0 for i in range(17)}}
+        self.assertEqual(aggregate_daily(series, minimum_hours=18), [])
+        series[2.0][start + timedelta(hours=17)] = 2.0
+        daily = aggregate_daily(series, minimum_hours=18)
+        self.assertEqual(len(daily), 1)
+        self.assertEqual(daily[0]["difference_1m_minus_2m"], -1.0)
+
+    def test_target_audit_reports_alignment_and_metrics(self):
+        from datetime import datetime, timedelta, timezone
+        start = datetime(2020, 1, 1, tzinfo=timezone.utc)
+        series = {1.0: {}, 2.0: {}}
+        for i in range(24):
+            timestamp = start + timedelta(hours=i)
+            series[1.0][timestamp] = 10.0
+            series[2.0][timestamp] = 9.0
+        result = audit_target(series, expected_start=start, expected_end=start + timedelta(hours=23))
+        self.assertEqual(result["summary"]["hourly"]["matched_source_timestamps"], 24)
+        self.assertEqual(result["summary"]["comparison"]["bias_1m_minus_2m"], 1.0)
+
     def test_standardise_two_header_csv_preserves_provenance(self):
         with tempfile.TemporaryDirectory() as directory:
             source = Path(directory) / "sample.csv"

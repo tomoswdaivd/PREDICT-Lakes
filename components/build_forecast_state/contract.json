@@ -1,0 +1,14 @@
+{
+  "component_name": "build_forecast_state",
+  "purpose": "Create the model-agnostic daily 2 m thermal state legally available at a specified forecast issue time.",
+  "required_inputs": ["canonical observation CSV files", "forecast_issue_time", "output_dir"],
+  "optional_inputs": ["availability_mode", "minimum_hours"],
+  "parameters": {"forecast_issue_time": "timezone-aware ISO-8601 timestamp", "availability_mode": "observation_time_proxy or data_available_time", "minimum_hours": "default 18 distinct valid hourly observations per UTC day"},
+  "outputs": ["forecast_state.json", "forecast_state_history.csv"],
+  "data_formats": ["canonical CSV input", "JSON", "CSV"],
+  "expected_units": {"temperature": "degC", "time": "UTC", "depth": "m"},
+  "failure_conditions": ["naive or malformed issue time", "invalid completeness threshold", "duplicate target timestamp", "unknown data availability in data_available_time mode", "malformed canonical timestamp"],
+  "provenance_generated": ["issue time", "availability mode and assumption", "input hashes", "source dataset/file identifiers", "last legal raw observation", "daily completeness rule"],
+  "scientific_assumptions": ["target is Windermere South Basin 2 m water temperature", "historical proxy mode uses observation_time as an explicitly labelled availability proxy", "no imputation or model-specific features are added", "future observation times are never used"],
+  "entry_point": "components/build_forecast_state/run.py"
+}

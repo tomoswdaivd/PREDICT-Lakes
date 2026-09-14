@@ -1,0 +1,43 @@
+{
+  "component": "build_forecast_state",
+  "site": {
+    "lake_id": "windermere",
+    "basin": "south"
+  },
+  "target": {
+    "variable": "water_temperature",
+    "depth_m": 2.0,
+    "unit": "degC",
+    "resolution": "daily",
+    "calendar": "UTC"
+  },
+  "forecast_issue_time": "2015-02-15T12:00:00+00:00",
+  "availability_mode": "observation_time_proxy",
+  "availability_assumption": "Historical data_available_time is unknown; observation_time is used as an explicit pseudo-operational availability proxy.",
+  "daily_completeness_rule": "at least 18 distinct valid hourly observations on a UTC calendar date, using only legally available observations; no imputation",
+  "last_legally_available_raw_observation_time": "2015-02-15T12:00:00+00:00",
+  "last_complete_daily_state_date": "2015-02-14",
+  "latest_valid_daily_temperature_2m": 4.759345416666667,
+  "latest_valid_daily_observation_date": "2015-02-14",
+  "n_valid_historical_daily_observations": 1138,
+  "recent_data": {
+    "window_days": 30,
+    "n_valid_daily_observations": 30,
+    "latest_history_date": "2015-02-14",
+    "latest_day_n_valid_hours": 24
+  },
+  "history_csv": "forecast_state_history.csv",
+  "provenance": {
+    "source_dataset_ids": [
+      "e68063b9-2e52-44df-8b6f-a3deb37b76cb"
+    ],
+    "source_files": [
+      "SBAS_2012_2013_2014_2015.csv"
+    ],
+    "input_sha256": {
+      "data\\interim\\e68063b9-canonical.csv": "36829d0a10bf519a3a84e302e7b6d9f4b83b760f314dd0256e932d330935a7f1"
+    },
+    "source_timestamps_preserved": true,
+    "data_available_time_note": "Historical archive values are blank/unknown; no availability timestamp was fabricated."
+  }
+}

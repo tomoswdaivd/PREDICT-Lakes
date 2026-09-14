@@ -38,3 +38,9 @@ The 1 m versus 2 m audit produced 2,751 matched daily pairs from 66,069 matched 
 Decision: adopt 2 m as the common 2008-2018 near-surface forecast target. The close daily agreement and much longer complete-depth coverage support its use for the 30-90 day seasonal thermal-state prototype. This does not imply numerical identity: occasional warm-season differences remain relevant to later uncertainty and verification analyses.
 
 Aggregation issue: the 2008-2011 release contains many timestamps at minute :59 rather than exactly on the hour. The audit retained source timestamps and matched depths exactly; exact-hour-grid counts are reported diagnostically and were not used to discard those observations. The daily rule is therefore based on distinct valid timestamps by UTC calendar date, not timestamp minute == 0.
+
+## Forecast-state semantics
+
+`build_forecast_state` creates the model-agnostic observed 2 m daily history available at an explicit forecast issue timestamp. Historical hindcasts use `availability_mode=observation_time_proxy`: because true historical `data_available_time` is unknown, an observation is eligible only when `observation_time <= forecast_issue_time`. This is an explicitly labelled pseudo-operational assumption, not a reconstruction of actual historical operational availability.
+
+The component preserves source timestamps, excludes later observations before applying the daily completeness rule, and does not turn an intraday partial day into a state unless that cutoff-limited day has at least 18 valid observations. The state records the issue time, last legal raw observation time, last eligible daily date, source identifiers and input hashes. A future `data_available_time` mode is supported in the interface and will require known availability at or before the issue time.

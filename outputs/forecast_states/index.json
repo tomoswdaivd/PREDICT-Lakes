@@ -1,0 +1,50 @@
+{
+  "availability_mode": "observation_time_proxy",
+  "examples": [
+    {
+      "label": "winter_2008",
+      "issue_time": "2008-02-15T12:00:00+00:00",
+      "last_raw": "2008-02-15T11:59:00+00:00",
+      "last_daily_date": "2008-02-14",
+      "latest_temperature_2m": 5.270975,
+      "n_valid_daily": 45,
+      "latest_day_n_valid_hours": 24
+    },
+    {
+      "label": "summer_2009",
+      "issue_time": "2009-07-15T12:00:00+00:00",
+      "last_raw": "2009-07-15T11:59:00+00:00",
+      "last_daily_date": "2009-07-14",
+      "latest_temperature_2m": 18.67825,
+      "n_valid_daily": 561,
+      "latest_day_n_valid_hours": 24
+    },
+    {
+      "label": "summer_2013",
+      "issue_time": "2013-07-15T12:00:00+00:00",
+      "last_raw": "2013-07-15T12:00:00+00:00",
+      "last_daily_date": "2013-07-14",
+      "latest_temperature_2m": 21.49448125,
+      "n_valid_daily": 558,
+      "latest_day_n_valid_hours": 24
+    },
+    {
+      "label": "winter_2015",
+      "issue_time": "2015-02-15T12:00:00+00:00",
+      "last_raw": "2015-02-15T12:00:00+00:00",
+      "last_daily_date": "2015-02-14",
+      "latest_temperature_2m": 4.759345416666667,
+      "n_valid_daily": 1138,
+      "latest_day_n_valid_hours": 24
+    },
+    {
+      "label": "summer_2017_intraday",
+      "issue_time": "2017-07-15T12:30:00+00:00",
+      "last_raw": "2017-07-15T12:00:00+00:00",
+      "last_daily_date": "2017-07-14",
+      "latest_temperature_2m": 17.729476666666667,
+      "n_valid_daily": 561,
+      "latest_day_n_valid_hours": 24
+    }
+  ]
+}

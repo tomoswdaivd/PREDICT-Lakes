@@ -1,0 +1,593 @@
+{
+  "component": "forecast_anomaly_relaxation",
+  "workflow_role": "forecast_side_only",
+  "model": {
+    "identifier": "lead_dependent_anomaly_relaxation",
+    "version": "1.0",
+    "configuration": {
+      "one_beta_per_horizon": true,
+      "season_specific_betas": false,
+      "forecast_correction_intercept": 0.0,
+      "beta_constraint": [
+        0.0,
+        1.0
+      ],
+      "minimum_beta_training_years": 3,
+      "minimum_climatology_years": 3,
+      "daily_minimum_hours": 18,
+      "window_minimum_valid_days": 27
+    }
+  },
+  "forecast_issue_time": "2017-07-15T12:30:00+00:00",
+  "forecast_state_date": "2017-07-14",
+  "availability_mode": "observation_time_proxy",
+  "availability_assumption": "Historical data_available_time is unknown; observation_time is used as an explicit pseudo-operational availability proxy.",
+  "current_state_anomaly": {
+    "window_start": "2017-06-15",
+    "window_end": "2017-07-14",
+    "expected_days": 30,
+    "valid_days": 30,
+    "completeness_fraction": 1.0,
+    "recent_window_is_valid": true,
+    "recent_30_day_mean": 17.09803240277778,
+    "historical_recent_window_climatology": 17.12042774299151,
+    "historical_training_years": [
+      2008,
+      2009,
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016
+    ],
+    "n_valid_historical_years": 9,
+    "historical_training_windows": [
+      {
+        "year": 2008,
+        "start_date": "2008-06-15",
+        "end_date": "2008-07-14",
+        "valid_days": 30,
+        "mean_temperature": 15.065865277777778
+      },
+      {
+        "year": 2009,
+        "start_date": "2009-06-15",
+        "end_date": "2009-07-14",
+        "valid_days": 30,
+        "mean_temperature": 18.393054166666666
+      },
+      {
+        "year": 2010,
+        "start_date": "2010-06-15",
+        "end_date": "2010-07-14",
+        "valid_days": 30,
+        "mean_temperature": 18.32168915277778
+      },
+      {
+        "year": 2011,
+        "start_date": "2011-06-15",
+        "end_date": "2011-07-14",
+        "valid_days": 30,
+        "mean_temperature": 17.374412916666667
+      },
+      {
+        "year": 2012,
+        "start_date": "2012-06-15",
+        "end_date": "2012-07-14",
+        "valid_days": 30,
+        "mean_temperature": 15.101235200812473
+      },
+      {
+        "year": 2013,
+        "start_date": "2013-06-15",
+        "end_date": "2013-07-14",
+        "valid_days": 30,
+        "mean_temperature": 16.920524722222222
+      },
+      {
+        "year": 2014,
+        "start_date": "2014-06-15",
+        "end_date": "2014-07-14",
+        "valid_days": 30,
+        "mean_temperature": 19.00358048611111
+      },
+      {
+        "year": 2015,
+        "start_date": "2015-06-15",
+        "end_date": "2015-07-14",
+        "valid_days": 30,
+        "mean_temperature": 16.298868305555555
+      },
+      {
+        "year": 2016,
+        "start_date": "2016-06-15",
+        "end_date": "2016-07-14",
+        "valid_days": 30,
+        "mean_temperature": 17.60461945833333
+      }
+    ],
+    "historical_training_windows_sha256": "979ab507a824e0be00767a26b10a5e378dd69e30b6d03d92c20f6b7b181c5346",
+    "unavailable_february_29_start_years": [],
+    "is_valid": true,
+    "current_anomaly": -0.022395340213730464,
+    "unit": "degC"
+  },
+  "fitted_coefficients": {
+    "month_1": {
+      "fitting_equation": "sum(current_anomaly * future_target_anomaly) / sum(current_anomaly^2); zero intercept",
+      "n_training_rows": 292,
+      "n_distinct_training_years": 6,
+      "training_years": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "minimum_training_years": 3,
+      "raw_beta": 0.5584638500184641,
+      "constrained_beta": 0.5584638500184641,
+      "constraint": "0 <= beta <= 1",
+      "is_valid": true,
+      "training_cases_sha256": "6f0cf4a7b894ccdd8564f1499d9529d7280224ee89408eca5739b5cba943ab74"
+    },
+    "month_2": {
+      "fitting_equation": "sum(current_anomaly * future_target_anomaly) / sum(current_anomaly^2); zero intercept",
+      "n_training_rows": 288,
+      "n_distinct_training_years": 6,
+      "training_years": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "minimum_training_years": 3,
+      "raw_beta": 0.28284095177520596,
+      "constrained_beta": 0.28284095177520596,
+      "constraint": "0 <= beta <= 1",
+      "is_valid": true,
+      "training_cases_sha256": "ca5b78da3dc0859594e53c21e4c703ddf12121ad3de824537dd1f711431e16c6"
+    },
+    "month_3": {
+      "fitting_equation": "sum(current_anomaly * future_target_anomaly) / sum(current_anomaly^2); zero intercept",
+      "n_training_rows": 283,
+      "n_distinct_training_years": 6,
+      "training_years": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "minimum_training_years": 3,
+      "raw_beta": 0.16675721057562612,
+      "constrained_beta": 0.16675721057562612,
+      "constraint": "0 <= beta <= 1",
+      "is_valid": true,
+      "training_cases_sha256": "b80d6e6d5fe9eaf74079477e0d286cb6f8eabcaa5a28af8b7d8723fbd54ba2b8"
+    }
+  },
+  "training_case_rule": "weekly cases issued in years < 2017, with target window completed before 2017-01-01",
+  "forecast_target_input_used": false,
+  "forecasts": [
+    {
+      "target_name": "month_1",
+      "lead_days": {
+        "start": 1,
+        "end": 30
+      },
+      "target_window_start": "2017-07-15",
+      "target_window_end": "2017-08-13",
+      "candidate_previous_years": [
+        2008,
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "n_candidate_previous_years": 9,
+      "training_years": [
+        2008,
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "n_valid_training_years": 9,
+      "minimum_training_years": 3,
+      "is_valid": true,
+      "predicted_mean_temperature": 18.2694123345024,
+      "historical_window_standard_deviation": 1.4760282582098911,
+      "spread_interpretation": "descriptive sample standard deviation; not a calibrated probabilistic forecast",
+      "unit": "degC",
+      "site": {
+        "lake_id": "windermere",
+        "basin": "south"
+      },
+      "variable": "water_temperature",
+      "depth_m": 2.0,
+      "training_windows": [
+        {
+          "year": 2008,
+          "start_date": "2008-07-15",
+          "end_date": "2008-08-13",
+          "valid_days": 30,
+          "mean_temperature": 17.424666666666667
+        },
+        {
+          "year": 2009,
+          "start_date": "2009-07-15",
+          "end_date": "2009-08-13",
+          "valid_days": 30,
+          "mean_temperature": 17.367126388888888
+        },
+        {
+          "year": 2010,
+          "start_date": "2010-07-15",
+          "end_date": "2010-08-13",
+          "valid_days": 30,
+          "mean_temperature": 17.363822680555554
+        },
+        {
+          "year": 2011,
+          "start_date": "2011-07-15",
+          "end_date": "2011-08-13",
+          "valid_days": 30,
+          "mean_temperature": 19.03188863888889
+        },
+        {
+          "year": 2012,
+          "start_date": "2012-07-15",
+          "end_date": "2012-08-13",
+          "valid_days": 30,
+          "mean_temperature": 16.994592121031747
+        },
+        {
+          "year": 2013,
+          "start_date": "2013-07-15",
+          "end_date": "2013-08-13",
+          "valid_days": 30,
+          "mean_temperature": 21.045895680555557
+        },
+        {
+          "year": 2014,
+          "start_date": "2014-07-15",
+          "end_date": "2014-08-13",
+          "valid_days": 30,
+          "mean_temperature": 20.113695027777776
+        },
+        {
+          "year": 2015,
+          "start_date": "2015-07-15",
+          "end_date": "2015-08-13",
+          "valid_days": 28,
+          "mean_temperature": 16.940542961309525
+        },
+        {
+          "year": 2016,
+          "start_date": "2016-07-15",
+          "end_date": "2016-08-13",
+          "valid_days": 30,
+          "mean_temperature": 18.255043736111112
+        }
+      ],
+      "training_windows_sha256": "4601de8347a31bc1a97daa87dede50b8b43f6f8a6831c69e849f5041bfe9e887",
+      "calendar_alignment": "same target-window start month/day in each prior year, followed by 30 consecutive UTC dates",
+      "unavailable_february_29_start_years": [],
+      "model_identifier": "lead_dependent_anomaly_relaxation",
+      "target_climatology_mean": 18.281919322420634,
+      "current_anomaly": -0.022395340213730464,
+      "forecast_equation": "target_window_climatology + constrained_beta_h * current_anomaly; zero forecast-correction intercept",
+      "raw_beta": 0.5584638500184641,
+      "constrained_beta": 0.5584638500184641,
+      "beta_training_rows": 292,
+      "beta_training_years": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "n_distinct_beta_training_years": 6,
+      "beta_training_cases_sha256": "6f0cf4a7b894ccdd8564f1499d9529d7280224ee89408eca5739b5cba943ab74"
+    },
+    {
+      "target_name": "month_2",
+      "lead_days": {
+        "start": 31,
+        "end": 60
+      },
+      "target_window_start": "2017-08-14",
+      "target_window_end": "2017-09-12",
+      "candidate_previous_years": [
+        2008,
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "n_candidate_previous_years": 9,
+      "training_years": [
+        2008,
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "n_valid_training_years": 9,
+      "minimum_training_years": 3,
+      "is_valid": true,
+      "predicted_mean_temperature": 17.125383470782076,
+      "historical_window_standard_deviation": 0.6434049549888792,
+      "spread_interpretation": "descriptive sample standard deviation; not a calibrated probabilistic forecast",
+      "unit": "degC",
+      "site": {
+        "lake_id": "windermere",
+        "basin": "south"
+      },
+      "variable": "water_temperature",
+      "depth_m": 2.0,
+      "training_windows": [
+        {
+          "year": 2008,
+          "start_date": "2008-08-14",
+          "end_date": "2008-09-12",
+          "valid_days": 30,
+          "mean_temperature": 16.070097222222223
+        },
+        {
+          "year": 2009,
+          "start_date": "2009-08-14",
+          "end_date": "2009-09-12",
+          "valid_days": 30,
+          "mean_temperature": 16.1253375
+        },
+        {
+          "year": 2010,
+          "start_date": "2010-08-14",
+          "end_date": "2010-09-12",
+          "valid_days": 30,
+          "mean_temperature": 17.514910194444443
+        },
+        {
+          "year": 2011,
+          "start_date": "2011-08-14",
+          "end_date": "2011-09-12",
+          "valid_days": 30,
+          "mean_temperature": 17.066142916666667
+        },
+        {
+          "year": 2012,
+          "start_date": "2012-08-14",
+          "end_date": "2012-09-12",
+          "valid_days": 30,
+          "mean_temperature": 17.417319680555554
+        },
+        {
+          "year": 2013,
+          "start_date": "2013-08-14",
+          "end_date": "2013-09-12",
+          "valid_days": 30,
+          "mean_temperature": 17.743182708333332
+        },
+        {
+          "year": 2014,
+          "start_date": "2014-08-14",
+          "end_date": "2014-09-12",
+          "valid_days": 30,
+          "mean_temperature": 17.174467472222222
+        },
+        {
+          "year": 2015,
+          "start_date": "2015-08-14",
+          "end_date": "2015-09-12",
+          "valid_days": 30,
+          "mean_temperature": 17.194226597222222
+        },
+        {
+          "year": 2016,
+          "start_date": "2016-08-14",
+          "end_date": "2016-09-12",
+          "valid_days": 30,
+          "mean_temperature": 17.879775819444443
+        }
+      ],
+      "training_windows_sha256": "73775e73dedd0ab31bef887541328aad18b417131abbb1e0708e070d4e2650af",
+      "calendar_alignment": "same target-window start month/day in each prior year, followed by 30 consecutive UTC dates",
+      "unavailable_february_29_start_years": [],
+      "model_identifier": "lead_dependent_anomaly_relaxation",
+      "target_climatology_mean": 17.131717790123457,
+      "current_anomaly": -0.022395340213730464,
+      "forecast_equation": "target_window_climatology + constrained_beta_h * current_anomaly; zero forecast-correction intercept",
+      "raw_beta": 0.28284095177520596,
+      "constrained_beta": 0.28284095177520596,
+      "beta_training_rows": 288,
+      "beta_training_years": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "n_distinct_beta_training_years": 6,
+      "beta_training_cases_sha256": "ca5b78da3dc0859594e53c21e4c703ddf12121ad3de824537dd1f711431e16c6"
+    },
+    {
+      "target_name": "month_3",
+      "lead_days": {
+        "start": 61,
+        "end": 90
+      },
+      "target_window_start": "2017-09-13",
+      "target_window_end": "2017-10-12",
+      "candidate_previous_years": [
+        2008,
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "n_candidate_previous_years": 9,
+      "training_years": [
+        2008,
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "n_valid_training_years": 9,
+      "minimum_training_years": 3,
+      "is_valid": true,
+      "predicted_mean_temperature": 14.945667031276805,
+      "historical_window_standard_deviation": 0.8515271408954612,
+      "spread_interpretation": "descriptive sample standard deviation; not a calibrated probabilistic forecast",
+      "unit": "degC",
+      "site": {
+        "lake_id": "windermere",
+        "basin": "south"
+      },
+      "variable": "water_temperature",
+      "depth_m": 2.0,
+      "training_windows": [
+        {
+          "year": 2008,
+          "start_date": "2008-09-13",
+          "end_date": "2008-10-12",
+          "valid_days": 30,
+          "mean_temperature": 14.028518055555555
+        },
+        {
+          "year": 2009,
+          "start_date": "2009-09-13",
+          "end_date": "2009-10-12",
+          "valid_days": 30,
+          "mean_temperature": 14.465104166666666
+        },
+        {
+          "year": 2010,
+          "start_date": "2010-09-13",
+          "end_date": "2010-10-12",
+          "valid_days": 30,
+          "mean_temperature": 15.068286958333333
+        },
+        {
+          "year": 2011,
+          "start_date": "2011-09-13",
+          "end_date": "2011-10-12",
+          "valid_days": 30,
+          "mean_temperature": 14.593987555555556
+        },
+        {
+          "year": 2012,
+          "start_date": "2012-09-13",
+          "end_date": "2012-10-12",
+          "valid_days": 30,
+          "mean_temperature": 13.88612948611111
+        },
+        {
+          "year": 2013,
+          "start_date": "2013-09-13",
+          "end_date": "2013-10-12",
+          "valid_days": 30,
+          "mean_temperature": 14.612673472222223
+        },
+        {
+          "year": 2014,
+          "start_date": "2014-09-13",
+          "end_date": "2014-10-12",
+          "valid_days": 30,
+          "mean_temperature": 16.227606430555557
+        },
+        {
+          "year": 2015,
+          "start_date": "2015-09-13",
+          "end_date": "2015-10-12",
+          "valid_days": 30,
+          "mean_temperature": 15.561851347222222
+        },
+        {
+          "year": 2016,
+          "start_date": "2016-09-13",
+          "end_date": "2016-10-12",
+          "valid_days": 30,
+          "mean_temperature": 16.100457069444445
+        }
+      ],
+      "training_windows_sha256": "ddb6084e316007a53f1c90ff9079ff10447da41a553edfd3f4361329cf912f28",
+      "calendar_alignment": "same target-window start month/day in each prior year, followed by 30 consecutive UTC dates",
+      "unavailable_february_29_start_years": [],
+      "model_identifier": "lead_dependent_anomaly_relaxation",
+      "target_climatology_mean": 14.94940161574074,
+      "current_anomaly": -0.022395340213730464,
+      "forecast_equation": "target_window_climatology + constrained_beta_h * current_anomaly; zero forecast-correction intercept",
+      "raw_beta": 0.16675721057562612,
+      "constrained_beta": 0.16675721057562612,
+      "beta_training_rows": 283,
+      "beta_training_years": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "n_distinct_beta_training_years": 6,
+      "beta_training_cases_sha256": "b80d6e6d5fe9eaf74079477e0d286cb6f8eabcaa5a28af8b7d8723fbd54ba2b8"
+    }
+  ],
+  "provenance": {
+    "forecast_state_input": "outputs\\forecast_states\\summer_2017_intraday\\forecast_state.json",
+    "forecast_state_sha256": "597e900e669e7738bff6dfa3dd2b910cd5a7ef8277dbf8d9980c324ae4265093",
+    "canonical_inputs": [
+      "data\\interim\\bd37710e-canonical.csv",
+      "data\\interim\\e1b6e387-canonical.csv",
+      "data\\interim\\e68063b9-canonical.csv"
+    ],
+    "eligible_training_observation_slice_sha256": "13a12948d0f2c07c4644fed1bd439fbcdb2f7f3f5995869fee2aff78dc6f42d4",
+    "recent_legal_observation_slice_sha256": "46aa11785dbe481e1bb1023b441f04e0ce39d71d61cf8ea86acd20d9f1406d0d",
+    "source_dataset_ids": [
+      "bd37710e-6a53-49f0-9a07-6973408a3342",
+      "e1b6e387-1bd6-444a-8de9-035df0b8baec",
+      "e68063b9-2e52-44df-8b6f-a3deb37b76cb"
+    ],
+    "source_files": [
+      "SBAS_2012_2013_2014_2015.csv",
+      "WSB_2008_2009_2010_2011.csv",
+      "sbas-2016_2017_2018.csv"
+    ],
+    "forecast_record_sha256": "3e060701e0074c5931323dd176c7cdf6a82c587967ce14a6256170451e1d5466",
+    "leakage_note": "Coefficient cases, their targets, and climatologies predate the issue year; current issue-year targets are never model inputs."
+  }
+}

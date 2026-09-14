@@ -1,0 +1,48 @@
+{
+  "audit_purpose": "confirm previous diagnostic slopes are unstandardised intercept OLS coefficients",
+  "by_horizon": {
+    "month_1": {
+      "n": 397,
+      "current_anomaly_standard_deviation": 1.1649901943412606,
+      "future_target_anomaly_standard_deviation": 1.1657214853303364,
+      "correlation": 0.5274726742910776,
+      "unstandardised_ols_slope": 0.527803780952375,
+      "intercept": 0.21464518017676879,
+      "sample_covariance": 0.7163364278232814,
+      "sample_current_anomaly_variance": 1.3572021529112883,
+      "direct_covariance_divided_by_variance": 0.527803780952375,
+      "correlation_times_standard_deviation_ratio": 0.5278037809523751,
+      "zero_intercept_slope_for_forecast_model_contrast": 0.5825405903718835,
+      "regression_definition": "ordinary unstandardised OLS with estimated intercept in degC anomaly units"
+    },
+    "month_2": {
+      "n": 392,
+      "current_anomaly_standard_deviation": 1.1745209128552276,
+      "future_target_anomaly_standard_deviation": 1.1761172892116016,
+      "correlation": 0.13486509812480843,
+      "unstandardised_ols_slope": 0.13504840303797783,
+      "intercept": 0.37408469285313406,
+      "sample_covariance": 0.18629918754975303,
+      "sample_current_anomaly_variance": 1.379499374734277,
+      "direct_covariance_divided_by_variance": 0.13504840303797783,
+      "correlation_times_standard_deviation_ratio": 0.13504840303797777,
+      "zero_intercept_slope_for_forecast_model_contrast": 0.23364467616114062,
+      "regression_definition": "ordinary unstandardised OLS with estimated intercept in degC anomaly units"
+    },
+    "month_3": {
+      "n": 388,
+      "current_anomaly_standard_deviation": 1.1712141998203482,
+      "future_target_anomaly_standard_deviation": 1.1739705905156084,
+      "correlation": -0.06554533174676841,
+      "unstandardised_ols_slope": -0.06569958921954515,
+      "intercept": 0.4327477070923905,
+      "sample_covariance": -0.09012293202716479,
+      "sample_current_anomaly_variance": 1.3717427018608188,
+      "direct_covariance_divided_by_variance": -0.06569958921954515,
+      "correlation_times_standard_deviation_ratio": -0.06569958921954516,
+      "zero_intercept_slope_for_forecast_model_contrast": 0.05541985166280913,
+      "regression_definition": "ordinary unstandardised OLS with estimated intercept in degC anomaly units"
+    }
+  },
+  "conclusion": "implementation is correct; near equality to correlation results from nearly equal current/future anomaly standard deviations"
+}

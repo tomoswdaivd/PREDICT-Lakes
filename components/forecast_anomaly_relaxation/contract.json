@@ -1,0 +1,22 @@
+{
+  "component_name": "forecast_anomaly_relaxation",
+  "purpose": "Fit one leakage-safe prior-year zero-intercept anomaly coefficient per horizon and apply a constrained anomaly correction.",
+  "required_inputs": ["canonical observation CSV files", "leakage-safe forecast_state.json", "output path"],
+  "optional_inputs": ["minimum_training_years", "minimum_climatology_years", "daily_minimum_hours", "window_minimum_valid_days"],
+  "parameters": {
+    "minimum_training_years": "default 3 distinct prior issue years for beta fitting",
+    "minimum_climatology_years": "default 3",
+    "daily_minimum_hours": "default 18",
+    "window_minimum_valid_days": "default 27 of 30",
+    "beta_constraint": "0 through 1 inclusive",
+    "forecast_correction_intercept": "fixed at zero"
+  },
+  "outputs": ["anomaly_relaxation_forecast.json using the common three-horizon forecast schema"],
+  "data_formats": ["canonical CSV", "forecast-state JSON", "forecast JSON"],
+  "expected_units": {"temperature_and_anomaly": "degC", "beta": "dimensionless", "depth": "m", "time": "UTC"},
+  "failure_conditions": ["invalid or mismatched forecast state", "state date is incomplete in legal observations", "duplicate timestamp", "invalid threshold", "malformed input"],
+  "provenance_generated": ["forecast-state and observation-slice hashes", "training case years and row counts", "raw and constrained beta", "training-case hashes", "current anomaly and target climatology", "inherited availability assumption"],
+  "scientific_assumptions": ["one non-seasonal beta is fitted per horizon", "beta uses zero-intercept OLS on completed weekly cases from years strictly before issue year", "training target windows must be complete before issue-year start", "beta is constrained to 0 through 1", "no meteorological predictors", "current issue targets are not model inputs"],
+  "entry_point": "components/forecast_anomaly_relaxation/run.py",
+  "manifest_status": "internal portability aid; not an official LifeWatch manifest"
+}

@@ -1,0 +1,2204 @@
+{
+  "model_identifier": "lead_dependent_anomaly_relaxation",
+  "model_version": "1.0",
+  "fitting_rule": "zero-intercept OLS beta=sum(x*y)/sum(x^2), fitted separately by horizon on completed weekly cases from issue years strictly before Y, then constrained to [0,1]",
+  "training_case_cutoff": "target window must end before January 1 of coefficient issue year; beta is fixed within each issue year",
+  "minimum_distinct_training_years": 3,
+  "issue_schedule": {
+    "definition": "same weekly schedule as existing baselines",
+    "n_scheduled_issue_dates": 571
+  },
+  "paired_comparison_by_horizon": {
+    "month_1": {
+      "n_paired": 256,
+      "climatology": {
+        "n": 256,
+        "bias_forecast_minus_observed": -0.5821888599586826,
+        "mae": 0.9348119344055491,
+        "rmse": 1.19561243318554,
+        "correlation": 0.9772744350843511
+      },
+      "full_anomaly_persistence": {
+        "n": 256,
+        "bias_forecast_minus_observed": 0.0011733185104397074,
+        "mae": 0.7067925794979849,
+        "rmse": 0.985832175122535,
+        "correlation": 0.980013491829557
+      },
+      "fitted_anomaly_relaxation": {
+        "n": 256,
+        "bias_forecast_minus_observed": -0.2780937935789981,
+        "mae": 0.6988908533541635,
+        "rmse": 0.9201966155091571,
+        "correlation": 0.9840214148829926
+      },
+      "improvement_relaxation_over_climatology": {
+        "mae": 0.23592108105138565,
+        "rmse": 0.2754158176763829
+      },
+      "improvement_relaxation_over_full_persistence": {
+        "mae": 0.007901726143821453,
+        "rmse": 0.06563555961337786
+      }
+    },
+    "month_2": {
+      "n_paired": 251,
+      "climatology": {
+        "n": 251,
+        "bias_forecast_minus_observed": -0.5776860723142567,
+        "mae": 0.9414565542977368,
+        "rmse": 1.204502519993657,
+        "correlation": 0.9765253493555522
+      },
+      "full_anomaly_persistence": {
+        "n": 251,
+        "bias_forecast_minus_observed": 0.027487303999030797,
+        "mae": 1.0098630995847153,
+        "rmse": 1.3782460458125705,
+        "correlation": 0.9603973900522793
+      },
+      "fitted_anomaly_relaxation": {
+        "n": 251,
+        "bias_forecast_minus_observed": -0.46085226608534374,
+        "mae": 0.9134038625659961,
+        "rmse": 1.17751176456006,
+        "correlation": 0.9753205397063457
+      },
+      "improvement_relaxation_over_climatology": {
+        "mae": 0.02805269173174063,
+        "rmse": 0.02699075543359708
+      },
+      "improvement_relaxation_over_full_persistence": {
+        "mae": 0.09645923701871917,
+        "rmse": 0.20073428125251058
+      }
+    },
+    "month_3": {
+      "n_paired": 247,
+      "climatology": {
+        "n": 247,
+        "bias_forecast_minus_observed": -0.5701115287364901,
+        "mae": 0.9373979037906722,
+        "rmse": 1.2055838270164214,
+        "correlation": 0.9761046884133121
+      },
+      "full_anomaly_persistence": {
+        "n": 247,
+        "bias_forecast_minus_observed": 0.05736304129938047,
+        "mae": 1.1225950306301655,
+        "rmse": 1.5421506889109904,
+        "correlation": 0.9497318926080394
+      },
+      "fitted_anomaly_relaxation": {
+        "n": 247,
+        "bias_forecast_minus_observed": -0.5215886911454575,
+        "mae": 0.95828149129298,
+        "rmse": 1.230628921323965,
+        "correlation": 0.973671446183192
+      },
+      "improvement_relaxation_over_climatology": {
+        "mae": -0.020883587502307788,
+        "rmse": -0.025045094307543536
+      },
+      "improvement_relaxation_over_full_persistence": {
+        "mae": 0.1643135393371855,
+        "rmse": 0.31152176758702543
+      }
+    }
+  },
+  "paired_comparison_by_issue_season": {
+    "month_1": {
+      "DJF": {
+        "n_paired": 61,
+        "climatology": {
+          "n": 61,
+          "bias_forecast_minus_observed": -0.7648118193145875,
+          "mae": 0.876496995752832,
+          "rmse": 1.0461259047313276,
+          "correlation": 0.7019352714474442
+        },
+        "full_anomaly_persistence": {
+          "n": 61,
+          "bias_forecast_minus_observed": -0.002417190243595712,
+          "mae": 0.4128624957250848,
+          "rmse": 0.5420652077294489,
+          "correlation": 0.851008778820991
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 61,
+          "bias_forecast_minus_observed": -0.36398977789658166,
+          "mae": 0.5467268069600874,
+          "rmse": 0.6667925864569426,
+          "correlation": 0.8620584179303227
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": 0.32977018879274467,
+          "rmse": 0.379333318274385
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": -0.13386431123500253,
+          "rmse": -0.12472737872749373
+        }
+      },
+      "MAM": {
+        "n_paired": 66,
+        "climatology": {
+          "n": 66,
+          "bias_forecast_minus_observed": -0.5395592812020106,
+          "mae": 1.123697605983093,
+          "rmse": 1.3598721061155328,
+          "correlation": 0.9508107486987493
+        },
+        "full_anomaly_persistence": {
+          "n": 66,
+          "bias_forecast_minus_observed": -0.18500637499448905,
+          "mae": 0.8093782277049402,
+          "rmse": 1.2085183962585062,
+          "correlation": 0.9553568817761026
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 66,
+          "bias_forecast_minus_observed": -0.3636054138956376,
+          "mae": 0.8716537880484113,
+          "rmse": 1.200722821577017,
+          "correlation": 0.9609812743574945
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": 0.25204381793468167,
+          "rmse": 0.15914928453851585
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": -0.06227556034347115,
+          "rmse": 0.007795574681489281
+        }
+      },
+      "JJA": {
+        "n_paired": 64,
+        "climatology": {
+          "n": 64,
+          "bias_forecast_minus_observed": -0.5765941494467004,
+          "mae": 1.0329751034260468,
+          "rmse": 1.4378840251134382,
+          "correlation": 0.3928538320843023
+        },
+        "full_anomaly_persistence": {
+          "n": 64,
+          "bias_forecast_minus_observed": 0.24934380437714887,
+          "mae": 1.0391622864259995,
+          "rmse": 1.2743831459305512,
+          "correlation": 0.738577295744796
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 64,
+          "bias_forecast_minus_observed": -0.13438290893093696,
+          "mae": 0.8528878157109115,
+          "rmse": 1.023101052179373,
+          "correlation": 0.7155038327761714
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": 0.18008728771513527,
+          "rmse": 0.4147829729340651
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": 0.18627447071508796,
+          "rmse": 0.25128209375117816
+        }
+      },
+      "SON": {
+        "n_paired": 65,
+        "climatology": {
+          "n": 65,
+          "bias_forecast_minus_observed": -0.4595982930355598,
+          "mae": 0.7010936900422569,
+          "rmse": 0.8303914886646897,
+          "correlation": 0.9665132245530387
+        },
+        "full_anomaly_persistence": {
+          "n": 65,
+          "bias_forecast_minus_observed": -0.05076560903029764,
+          "mae": 0.5512144423455994,
+          "rmse": 0.685454222089798,
+          "correlation": 0.967324543307429
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 65,
+          "bias_forecast_minus_observed": -0.25215648024369214,
+          "mae": 0.5146423541139543,
+          "rmse": 0.6504915521263244,
+          "correlation": 0.9750048862005851
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": 0.18645133592830254,
+          "rmse": 0.17989993653836533
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": 0.03657208823164504,
+          "rmse": 0.034962669963473636
+        }
+      }
+    },
+    "month_2": {
+      "DJF": {
+        "n_paired": 60,
+        "climatology": {
+          "n": 60,
+          "bias_forecast_minus_observed": -0.5310686173224161,
+          "mae": 0.8610078755553938,
+          "rmse": 1.0168715761008955,
+          "correlation": 0.6211257036766004
+        },
+        "full_anomaly_persistence": {
+          "n": 60,
+          "bias_forecast_minus_observed": 0.24983529281109146,
+          "mae": 0.674177994874884,
+          "rmse": 0.8157931838438096,
+          "correlation": 0.7166746326169644
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 60,
+          "bias_forecast_minus_observed": -0.37487548724309644,
+          "mae": 0.7523203409917983,
+          "rmse": 0.904667442705115,
+          "correlation": 0.660740406010049
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": 0.10868753456359548,
+          "rmse": 0.1122041333957805
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": -0.0781423461169144,
+          "rmse": -0.0888742588613054
+        }
+      },
+      "MAM": {
+        "n_paired": 66,
+        "climatology": {
+          "n": 66,
+          "bias_forecast_minus_observed": -0.7671244175455453,
+          "mae": 1.3108911714169156,
+          "rmse": 1.6512248397923892,
+          "correlation": 0.9295084659714522
+        },
+        "full_anomaly_persistence": {
+          "n": 66,
+          "bias_forecast_minus_observed": -0.4125715113380238,
+          "mae": 1.3043830710692836,
+          "rmse": 1.8428282782503231,
+          "correlation": 0.8856909257246522
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 66,
+          "bias_forecast_minus_observed": -0.7158787681269995,
+          "mae": 1.30822891371627,
+          "rmse": 1.6881016012569194,
+          "correlation": 0.9219177797795656
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": 0.002662257700645654,
+          "rmse": -0.03687676146453023
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": -0.003845842646986286,
+          "rmse": 0.1547266769934037
+        }
+      },
+      "JJA": {
+        "n_paired": 64,
+        "climatology": {
+          "n": 64,
+          "bias_forecast_minus_observed": -0.39798434972636687,
+          "mae": 0.834828931211311,
+          "rmse": 1.0594674499696233,
+          "correlation": 0.8384615985638434
+        },
+        "full_anomaly_persistence": {
+          "n": 64,
+          "bias_forecast_minus_observed": 0.4279536040974825,
+          "mae": 1.3350174087830646,
+          "rmse": 1.6546877187840177,
+          "correlation": 0.7619195445177304
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 64,
+          "bias_forecast_minus_observed": -0.21471975111575878,
+          "mae": 0.8428872841728003,
+          "rmse": 1.0198059669485275,
+          "correlation": 0.8421939990337451
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": -0.008058352961489379,
+          "rmse": 0.039661483021095734
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": 0.4921301246102643,
+          "rmse": 0.6348817518354901
+        }
+      },
+      "SON": {
+        "n_paired": 61,
+        "climatology": {
+          "n": 61,
+          "bias_forecast_minus_observed": -0.6071127405088527,
+          "mae": 0.7327418636781633,
+          "rmse": 0.9083014905919601,
+          "correlation": 0.9571563845665321
+        },
+        "full_anomaly_persistence": {
+          "n": 61,
+          "bias_forecast_minus_observed": -0.13524778981701746,
+          "mae": 0.680238712304617,
+          "rmse": 0.7839630195738264,
+          "correlation": 0.9409193830382031
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 61,
+          "bias_forecast_minus_observed": -0.5277266686072944,
+          "mae": 0.7186435172495754,
+          "rmse": 0.8519506974140837,
+          "correlation": 0.9572914136657011
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": 0.014098346428587871,
+          "rmse": 0.05635079317787639
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": -0.03840480494495846,
+          "rmse": -0.06798767784025728
+        }
+      }
+    },
+    "month_3": {
+      "DJF": {
+        "n_paired": 60,
+        "climatology": {
+          "n": 60,
+          "bias_forecast_minus_observed": -0.31780312763631796,
+          "mae": 0.7962690997551367,
+          "rmse": 0.9311934196228826,
+          "correlation": 0.9208837551502818
+        },
+        "full_anomaly_persistence": {
+          "n": 60,
+          "bias_forecast_minus_observed": 0.4631007824971895,
+          "mae": 0.8702684073543956,
+          "rmse": 1.017843051805639,
+          "correlation": 0.9170924861005253
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 60,
+          "bias_forecast_minus_observed": -0.2671946711450312,
+          "mae": 0.7715043721185022,
+          "rmse": 0.90299581710683,
+          "correlation": 0.9233000220302342
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": 0.02476472763663451,
+          "rmse": 0.028197602516052633
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": 0.09876403523589339,
+          "rmse": 0.11484723469880898
+        }
+      },
+      "MAM": {
+        "n_paired": 66,
+        "climatology": {
+          "n": 66,
+          "bias_forecast_minus_observed": -0.803973699979505,
+          "mae": 1.4493665924211074,
+          "rmse": 1.7725771807644672,
+          "correlation": 0.7646710901624229
+        },
+        "full_anomaly_persistence": {
+          "n": 66,
+          "bias_forecast_minus_observed": -0.4494207937719834,
+          "mae": 1.4873867070221953,
+          "rmse": 2.040021537236694,
+          "correlation": 0.619071420408639
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 66,
+          "bias_forecast_minus_observed": -0.7892223774166902,
+          "mae": 1.4813661549770967,
+          "rmse": 1.825356757340693,
+          "correlation": 0.7428043079471067
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": -0.031999562555989236,
+          "rmse": -0.052779576576225784
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": 0.006020552045098659,
+          "rmse": 0.21466477989600108
+        }
+      },
+      "JJA": {
+        "n_paired": 64,
+        "climatology": {
+          "n": 64,
+          "bias_forecast_minus_observed": -0.3964943403535365,
+          "mae": 0.655318947637612,
+          "rmse": 0.7943537755700542,
+          "correlation": 0.9577347243591037
+        },
+        "full_anomaly_persistence": {
+          "n": 64,
+          "bias_forecast_minus_observed": 0.42944361347031274,
+          "mae": 1.458072384552842,
+          "rmse": 1.8642283703092244,
+          "correlation": 0.8053582528024421
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 64,
+          "bias_forecast_minus_observed": -0.2960183072762812,
+          "mae": 0.730206455398038,
+          "rmse": 0.8695312597838284,
+          "correlation": 0.9415460360715305
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": -0.07488750776042596,
+          "rmse": -0.07517748421377424
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": 0.7278659291548041,
+          "rmse": 0.994697110525396
+        }
+      },
+      "SON": {
+        "n_paired": 57,
+        "climatology": {
+          "n": 57,
+          "bias_forecast_minus_observed": -0.7598501396221107,
+          "mae": 0.809868921094519,
+          "rmse": 1.0192247226394768,
+          "correlation": 0.9148282088367656
+        },
+        "full_anomaly_persistence": {
+          "n": 57,
+          "bias_forecast_minus_observed": -0.20070166003567552,
+          "mae": 0.5891353131498308,
+          "rmse": 0.7029835871205776,
+          "correlation": 0.9083397089187918
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 57,
+          "bias_forecast_minus_observed": -0.7327522433165362,
+          "mae": 0.8052962569875987,
+          "rmse": 0.9986643688867616,
+          "correlation": 0.9144314346524501
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": 0.0045726641069203655,
+          "rmse": 0.020560353752715255
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": -0.21616094383776785,
+          "rmse": -0.29568078176618395
+        }
+      }
+    }
+  },
+  "paired_comparison_by_issue_month": {
+    "month_1": {
+      "1": {
+        "n_paired": 22,
+        "climatology": {
+          "n": 22,
+          "bias_forecast_minus_observed": -0.7263114633701097,
+          "mae": 0.7558741003317289,
+          "rmse": 0.9193086757279526,
+          "correlation": 0.19277867111518743
+        },
+        "full_anomaly_persistence": {
+          "n": 22,
+          "bias_forecast_minus_observed": 0.15141138135549292,
+          "mae": 0.2205702269589973,
+          "rmse": 0.3620011561555015,
+          "correlation": 0.8257402584563213
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 22,
+          "bias_forecast_minus_observed": -0.2557154922075211,
+          "mae": 0.3478944127679747,
+          "rmse": 0.41306997704986365,
+          "correlation": 0.822353360198777
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": 0.40797968756375413,
+          "rmse": 0.5062386986780889
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": -0.12732418580897742,
+          "rmse": -0.051068820894362155
+        }
+      },
+      "2": {
+        "n_paired": 20,
+        "climatology": {
+          "n": 20,
+          "bias_forecast_minus_observed": -0.49324269723916403,
+          "mae": 0.8013635847180287,
+          "rmse": 0.894579836111949,
+          "correlation": -0.12446507070664681
+        },
+        "full_anomaly_persistence": {
+          "n": 20,
+          "bias_forecast_minus_observed": 0.29016886016555127,
+          "mae": 0.4393782831686043,
+          "rmse": 0.533970624539024,
+          "correlation": 0.7454103748448954
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 20,
+          "bias_forecast_minus_observed": -0.07622036465845805,
+          "mae": 0.47276243261758066,
+          "rmse": 0.5523386926282641,
+          "correlation": 0.5997630403654708
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": 0.32860115210044805,
+          "rmse": 0.34224114348368495
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": -0.033384149448976386,
+          "rmse": -0.018368068089240075
+        }
+      },
+      "3": {
+        "n_paired": 22,
+        "climatology": {
+          "n": 22,
+          "bias_forecast_minus_observed": -0.2826944346686402,
+          "mae": 0.8559881093271299,
+          "rmse": 1.0420421203322339,
+          "correlation": 0.5446034347473936
+        },
+        "full_anomaly_persistence": {
+          "n": 22,
+          "bias_forecast_minus_observed": 0.21498208869473273,
+          "mae": 0.45668789017779143,
+          "rmse": 0.5535327351136516,
+          "correlation": 0.9237333577099179
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 22,
+          "bias_forecast_minus_observed": -0.02499742841949089,
+          "mae": 0.5596053774957834,
+          "rmse": 0.6980346514395219,
+          "correlation": 0.8322712374798817
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": 0.29638273183134645,
+          "rmse": 0.34400746889271194
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": -0.102917487317992,
+          "rmse": -0.14450191632587028
+        }
+      },
+      "4": {
+        "n_paired": 21,
+        "climatology": {
+          "n": 21,
+          "bias_forecast_minus_observed": -0.19541733619226098,
+          "mae": 0.7573886277235027,
+          "rmse": 0.8536855950489034,
+          "correlation": 0.7689393511055154
+        },
+        "full_anomaly_persistence": {
+          "n": 21,
+          "bias_forecast_minus_observed": 0.1283375763616308,
+          "mae": 0.5387259966445693,
+          "rmse": 0.7349096596213855,
+          "correlation": 0.8657643527247507
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 21,
+          "bias_forecast_minus_observed": -0.04350998986270857,
+          "mae": 0.4999241579822148,
+          "rmse": 0.6071455925084269,
+          "correlation": 0.8847405900531535
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": 0.2574644697412879,
+          "rmse": 0.24654000254047648
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": 0.03880183866235454,
+          "rmse": 0.12776406711295862
+        }
+      },
+      "5": {
+        "n_paired": 23,
+        "climatology": {
+          "n": 23,
+          "bias_forecast_minus_observed": -1.0994726494167448,
+          "mae": 1.7142235829345098,
+          "rmse": 1.8980257637679085,
+          "correlation": 0.7219048453455956
+        },
+        "full_anomaly_persistence": {
+          "n": 23,
+          "bias_forecast_minus_observed": -0.8537006871528107,
+          "mae": 1.3938514571773342,
+          "rmse": 1.8452217966347955,
+          "correlation": 0.679693276786651
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 23,
+          "bias_forecast_minus_observed": -0.9797523523811479,
+          "mae": 1.5095401908113653,
+          "rmse": 1.8260653352627567,
+          "correlation": 0.7168993105953128
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": 0.20468339212314457,
+          "rmse": 0.07196042850515183
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": -0.1156887336340311,
+          "rmse": 0.019156461372038747
+        }
+      },
+      "6": {
+        "n_paired": 21,
+        "climatology": {
+          "n": 21,
+          "bias_forecast_minus_observed": -0.9074756950153294,
+          "mae": 1.4875724888039572,
+          "rmse": 1.938885238513211,
+          "correlation": 0.19933665562636896
+        },
+        "full_anomaly_persistence": {
+          "n": 21,
+          "bias_forecast_minus_observed": 0.02594985400676853,
+          "mae": 1.1274186784212585,
+          "rmse": 1.3309261267986343,
+          "correlation": 0.7178599156496234
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 21,
+          "bias_forecast_minus_observed": -0.3871886389421518,
+          "mae": 1.1105211422483237,
+          "rmse": 1.3278665589936607,
+          "correlation": 0.678283429172487
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": 0.37705134655563355,
+          "rmse": 0.6110186795195502
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": 0.01689753617293488,
+          "rmse": 0.0030595678049736286
+        }
+      },
+      "7": {
+        "n_paired": 21,
+        "climatology": {
+          "n": 21,
+          "bias_forecast_minus_observed": -0.5386432072682513,
+          "mae": 1.1752555905173385,
+          "rmse": 1.4680907672641488,
+          "correlation": -0.32505077940218646
+        },
+        "full_anomaly_persistence": {
+          "n": 21,
+          "bias_forecast_minus_observed": 0.7815151608820672,
+          "mae": 0.9290793687225056,
+          "rmse": 1.2751757882291448,
+          "correlation": 0.7627881768523698
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 21,
+          "bias_forecast_minus_observed": 0.1655682189268524,
+          "mae": 0.8021178888587105,
+          "rmse": 0.9173963940974642,
+          "correlation": 0.7223514827102223
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": 0.37313770165862803,
+          "rmse": 0.5506943731666846
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": 0.12696147986379513,
+          "rmse": 0.3577793941316806
+        }
+      },
+      "8": {
+        "n_paired": 22,
+        "climatology": {
+          "n": 22,
+          "bias_forecast_minus_observed": -0.2969785734833467,
+          "mae": 0.4632280433418083,
+          "rmse": 0.6073330002121425,
+          "correlation": 0.5205478322905793
+        },
+        "full_anomaly_persistence": {
+          "n": 22,
+          "bias_forecast_minus_observed": -0.045398265114910075,
+          "mae": 1.0599966973293145,
+          "rmse": 1.2171718935327944,
+          "correlation": 0.4569935059899207
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 22,
+          "bias_forecast_minus_observed": -0.17938533414812177,
+          "mae": 0.6554272978295738,
+          "rmse": 0.7473993772281927,
+          "correlation": 0.545199729640464
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": -0.19219925448776548,
+          "rmse": -0.14006637701605018
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": 0.4045693994997407,
+          "rmse": 0.4697725163046017
+        }
+      },
+      "9": {
+        "n_paired": 22,
+        "climatology": {
+          "n": 22,
+          "bias_forecast_minus_observed": -0.5676492980582196,
+          "mae": 0.9116270696816791,
+          "rmse": 1.0307117450250451,
+          "correlation": 0.6508492113797695
+        },
+        "full_anomaly_persistence": {
+          "n": 22,
+          "bias_forecast_minus_observed": -0.2031460663486767,
+          "mae": 0.7575429990534315,
+          "rmse": 0.9177768177696154,
+          "correlation": 0.6060706448635074
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 22,
+          "bias_forecast_minus_observed": -0.37594355959787135,
+          "mae": 0.7649239927808377,
+          "rmse": 0.919704407686177,
+          "correlation": 0.665194742328414
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": 0.1467030769008414,
+          "rmse": 0.11100733733886814
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": -0.007380993727406193,
+          "rmse": -0.0019275899165616117
+        }
+      },
+      "10": {
+        "n_paired": 22,
+        "climatology": {
+          "n": 22,
+          "bias_forecast_minus_observed": -0.37142434200059404,
+          "mae": 0.6267935048508355,
+          "rmse": 0.7016957151453048,
+          "correlation": 0.8085074794697104
+        },
+        "full_anomaly_persistence": {
+          "n": 22,
+          "bias_forecast_minus_observed": 0.07771232898180785,
+          "mae": 0.5065191286651068,
+          "rmse": 0.5793904331490627,
+          "correlation": 0.8948770071822731
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 22,
+          "bias_forecast_minus_observed": -0.1523599106959522,
+          "mae": 0.33414200264262334,
+          "rmse": 0.4072725920138872,
+          "correlation": 0.9299707477371292
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": 0.2926515022082122,
+          "rmse": 0.2944231231314176
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": 0.1723771260224835,
+          "rmse": 0.17211784113517548
+        }
+      },
+      "11": {
+        "n_paired": 21,
+        "climatology": {
+          "n": 21,
+          "bias_forecast_minus_observed": -0.4387747126674995,
+          "mae": 0.5583732006205416,
+          "rmse": 0.7110151318914376,
+          "correlation": 0.7902540305816933
+        },
+        "full_anomaly_persistence": {
+          "n": 21,
+          "bias_forecast_minus_observed": -0.02572487451896341,
+          "mae": 0.3818843782217198,
+          "rmse": 0.4692405485273841,
+          "correlation": 0.8903342157326418
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 21,
+          "bias_forecast_minus_observed": -0.22702356520837486,
+          "mae": 0.44153814848051837,
+          "rmse": 0.4998120743169579,
+          "correlation": 0.8764956948794864
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": 0.11683505214002327,
+          "rmse": 0.2112030575744797
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": -0.05965377025879859,
+          "rmse": -0.030571525789573784
+        }
+      },
+      "12": {
+        "n_paired": 19,
+        "climatology": {
+          "n": 19,
+          "bias_forecast_minus_observed": -1.0952534125928497,
+          "mae": 1.0952534125928497,
+          "rmse": 1.3009886230756575,
+          "correlation": 0.4194430156176459
+        },
+        "full_anomaly_persistence": {
+          "n": 19,
+          "bias_forecast_minus_observed": -0.4885197998942741,
+          "mae": 0.6076053464610605,
+          "rmse": 0.7010682481452244,
+          "correlation": 0.7254931336004982
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 19,
+          "bias_forecast_minus_observed": -0.7922751752608871,
+          "mae": 0.8548110258588563,
+          "rmse": 0.9532769851088141,
+          "correlation": 0.6660182174199253
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": 0.24044238673399343,
+          "rmse": 0.34771163796684346
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": -0.2472056793977958,
+          "rmse": -0.2522087369635897
+        }
+      }
+    },
+    "month_2": {
+      "1": {
+        "n_paired": 22,
+        "climatology": {
+          "n": 22,
+          "bias_forecast_minus_observed": -0.4512612044984132,
+          "mae": 0.7753486285344255,
+          "rmse": 0.87438265022244,
+          "correlation": -0.06346769238524208
+        },
+        "full_anomaly_persistence": {
+          "n": 22,
+          "bias_forecast_minus_observed": 0.4264616402271893,
+          "mae": 0.6165297884464505,
+          "rmse": 0.7553447007449854,
+          "correlation": 0.5311454422820328
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 22,
+          "bias_forecast_minus_observed": -0.2599447647658317,
+          "mae": 0.6457655421780224,
+          "rmse": 0.7373711293963929,
+          "correlation": 0.18378015191548774
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": 0.12958308635640314,
+          "rmse": 0.13701152082604706
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": -0.029235753731571945,
+          "rmse": 0.017973571348592454
+        }
+      },
+      "2": {
+        "n_paired": 20,
+        "climatology": {
+          "n": 20,
+          "bias_forecast_minus_observed": -0.29755515795890936,
+          "mae": 0.9302918985958744,
+          "rmse": 1.092352419197676,
+          "correlation": 0.49298941028306953
+        },
+        "full_anomaly_persistence": {
+          "n": 20,
+          "bias_forecast_minus_observed": 0.48585639944580594,
+          "mae": 0.8175024052310187,
+          "rmse": 0.9770167983546414,
+          "correlation": 0.7129380080620119
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 20,
+          "bias_forecast_minus_observed": -0.133500038057825,
+          "mae": 0.8107861063095001,
+          "rmse": 1.0056416827190011,
+          "correlation": 0.5549288716891738
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": 0.11950579228637426,
+          "rmse": 0.08671073647867478
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": 0.006716298921518593,
+          "rmse": -0.028624884364359726
+        }
+      },
+      "3": {
+        "n_paired": 22,
+        "climatology": {
+          "n": 22,
+          "bias_forecast_minus_observed": -0.1683569871641054,
+          "mae": 0.6961775510301882,
+          "rmse": 0.809131641086859,
+          "correlation": 0.7948414629788134
+        },
+        "full_anomaly_persistence": {
+          "n": 22,
+          "bias_forecast_minus_observed": 0.3293195361992675,
+          "mae": 0.6110554556245916,
+          "rmse": 0.8142423449172365,
+          "correlation": 0.8210076984646638
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 22,
+          "bias_forecast_minus_observed": -0.07841815623609055,
+          "mae": 0.6581519571616237,
+          "rmse": 0.7576503186736051,
+          "correlation": 0.8148522967298774
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": 0.03802559386856452,
+          "rmse": 0.05148132241325387
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": -0.04709650153703204,
+          "rmse": 0.056592026243631355
+        }
+      },
+      "4": {
+        "n_paired": 21,
+        "climatology": {
+          "n": 21,
+          "bias_forecast_minus_observed": -1.0115293271840977,
+          "mae": 1.6917111640158804,
+          "rmse": 1.8534522863534022,
+          "correlation": 0.6304250147974999
+        },
+        "full_anomaly_persistence": {
+          "n": 21,
+          "bias_forecast_minus_observed": -0.6877744146302059,
+          "mae": 1.6152508370293284,
+          "rmse": 2.200303007117995,
+          "correlation": 0.3434124262870532
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 21,
+          "bias_forecast_minus_observed": -0.9813222420642946,
+          "mae": 1.6708862172442616,
+          "rmse": 1.928985992063844,
+          "correlation": 0.5635820957542865
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": 0.020824946771618835,
+          "rmse": -0.07553370571044171
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": -0.055635380214933194,
+          "rmse": 0.27131701505415107
+        }
+      },
+      "5": {
+        "n_paired": 23,
+        "climatology": {
+          "n": 23,
+          "bias_forecast_minus_observed": -1.1167061725882441,
+          "mae": 1.5511729020225564,
+          "rmse": 2.0152420063021954,
+          "correlation": 0.18969079208639691
+        },
+        "full_anomaly_persistence": {
+          "n": 23,
+          "bias_forecast_minus_observed": -0.8709342103243101,
+          "mae": 1.6837302212702525,
+          "rmse": 2.1657739580799324,
+          "correlation": 0.04088894627685235
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 23,
+          "bias_forecast_minus_observed": -1.0832622685146862,
+          "mae": 1.598919768938635,
+          "rmse": 2.0569063815787056,
+          "correlation": 0.1139286606209178
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": -0.047746866916078545,
+          "rmse": -0.041664375276510235
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": 0.08481045233161755,
+          "rmse": 0.1088675765012268
+        }
+      },
+      "6": {
+        "n_paired": 21,
+        "climatology": {
+          "n": 21,
+          "bias_forecast_minus_observed": -0.34117413698978183,
+          "mae": 1.1523783202145612,
+          "rmse": 1.4025564247905729,
+          "correlation": -0.2100766179187528
+        },
+        "full_anomaly_persistence": {
+          "n": 21,
+          "bias_forecast_minus_observed": 0.5922514120323162,
+          "mae": 1.2644785514057613,
+          "rmse": 1.444900103746061,
+          "correlation": 0.6225133731582365
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 21,
+          "bias_forecast_minus_observed": -0.09687228326727122,
+          "mae": 1.0149106233197047,
+          "rmse": 1.1698381072295563,
+          "correlation": 0.4938239133553736
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": 0.1374676968948565,
+          "rmse": 0.23271831756101657
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": 0.24956792808605655,
+          "rmse": 0.27506199651650465
+        }
+      },
+      "7": {
+        "n_paired": 21,
+        "climatology": {
+          "n": 21,
+          "bias_forecast_minus_observed": -0.32690549178753736,
+          "mae": 0.4660559404175175,
+          "rmse": 0.6037965484916298,
+          "correlation": 0.5907161126516383
+        },
+        "full_anomaly_persistence": {
+          "n": 21,
+          "bias_forecast_minus_observed": 0.9932528763627813,
+          "mae": 1.5349373059108018,
+          "rmse": 1.918484530950182,
+          "correlation": 0.25291235170345344
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 21,
+          "bias_forecast_minus_observed": -0.03639449720743765,
+          "mae": 0.5082653853247467,
+          "rmse": 0.67275162462748,
+          "correlation": 0.46870185014839
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": -0.04220944490722922,
+          "rmse": -0.06895507613585017
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": 1.026671920586055,
+          "rmse": 1.245732906322702
+        }
+      },
+      "8": {
+        "n_paired": 22,
+        "climatology": {
+          "n": 22,
+          "bias_forecast_minus_observed": -0.5200602808256263,
+          "mae": 0.8837241874659203,
+          "rmse": 1.0196196044774068,
+          "correlation": 0.6769584945306493
+        },
+        "full_anomaly_persistence": {
+          "n": 22,
+          "bias_forecast_minus_observed": -0.2684799724571894,
+          "mae": 1.2115173253849234,
+          "rmse": 1.5681017661367622,
+          "correlation": 0.34660694993906227
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 22,
+          "bias_forecast_minus_observed": -0.49743007642907616,
+          "mae": 0.9980950002511702,
+          "rmse": 1.1345170097176782,
+          "correlation": 0.5508273385347814
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": -0.11437081278524985,
+          "rmse": -0.11489740524027137
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": 0.21342232513375325,
+          "rmse": 0.433584756419084
+        }
+      },
+      "9": {
+        "n_paired": 22,
+        "climatology": {
+          "n": 22,
+          "bias_forecast_minus_observed": -0.4598408601313548,
+          "mae": 0.665551559037811,
+          "rmse": 0.7430423804903338,
+          "correlation": 0.8198288466767283
+        },
+        "full_anomaly_persistence": {
+          "n": 22,
+          "bias_forecast_minus_observed": -0.09533762842181191,
+          "mae": 0.7657863319837411,
+          "rmse": 0.8546493404165019,
+          "correlation": 0.5765665856845341
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 22,
+          "bias_forecast_minus_observed": -0.38962517563975324,
+          "mae": 0.6696735925698278,
+          "rmse": 0.7412092801218996,
+          "correlation": 0.7857722783452392
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": -0.004122033532016789,
+          "rmse": 0.001833100368434204
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": 0.0961127394139133,
+          "rmse": 0.1134400602946023
+        }
+      },
+      "10": {
+        "n_paired": 22,
+        "climatology": {
+          "n": 22,
+          "bias_forecast_minus_observed": -0.42611589850333265,
+          "mae": 0.5670193565194998,
+          "rmse": 0.7197011035145575,
+          "correlation": 0.777492863816118
+        },
+        "full_anomaly_persistence": {
+          "n": 22,
+          "bias_forecast_minus_observed": 0.023020772479069217,
+          "mae": 0.6542350158708903,
+          "rmse": 0.8008634413703313,
+          "correlation": 0.7571820913664883
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 22,
+          "bias_forecast_minus_observed": -0.37485622238873945,
+          "mae": 0.5936352474746872,
+          "rmse": 0.6835614053319938,
+          "correlation": 0.7912048905705918
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": -0.02661589095518746,
+          "rmse": 0.036139698182563684
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": 0.06059976839620307,
+          "rmse": 0.11730203603833744
+        }
+      },
+      "11": {
+        "n_paired": 17,
+        "climatology": {
+          "n": 17,
+          "bias_forecast_minus_observed": -1.0319310871221699,
+          "mae": 1.0341584436533604,
+          "rmse": 1.2551988593141508,
+          "correlation": 0.3860874567437542
+        },
+        "full_anomaly_persistence": {
+          "n": 17,
+          "bias_forecast_minus_observed": -0.3917143734175133,
+          "mae": 0.6031818704576317,
+          "rmse": 0.655775631916552,
+          "correlation": 0.7121991278379445
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 17,
+          "bias_forecast_minus_observed": -0.9042785899069483,
+          "mae": 0.9437917688967514,
+          "rmse": 1.1352319488499183,
+          "correlation": 0.4518948071734432
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": 0.09036667475660898,
+          "rmse": 0.11996691046423247
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": -0.3406098984391197,
+          "rmse": -0.4794563169333663
+        }
+      },
+      "12": {
+        "n_paired": 18,
+        "climatology": {
+          "n": 18,
+          "bias_forecast_minus_observed": -0.8880704100667604,
+          "mae": 0.8887202629804876,
+          "rmse": 1.0892658476687271,
+          "correlation": 0.2749441534009382
+        },
+        "full_anomaly_persistence": {
+          "n": 18,
+          "bias_forecast_minus_observed": -0.22828702806937753,
+          "mae": 0.5853875690028195,
+          "rmse": 0.6785552900693751,
+          "correlation": 0.42505769221510603
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 18,
+          "bias_forecast_minus_observed": -0.7835413138100549,
+          "mae": 0.8175920225223003,
+          "rmse": 0.969459500578596,
+          "correlation": 0.4863247200932383
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": 0.07112824045818722,
+          "rmse": 0.11980634709013116
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": -0.23220445351948082,
+          "rmse": -0.2909042105092209
+        }
+      }
+    },
+    "month_3": {
+      "1": {
+        "n_paired": 22,
+        "climatology": {
+          "n": 22,
+          "bias_forecast_minus_observed": -0.26273566417007116,
+          "mae": 0.9514302478403782,
+          "rmse": 1.107480764948296,
+          "correlation": 0.5587224223004007
+        },
+        "full_anomaly_persistence": {
+          "n": 22,
+          "bias_forecast_minus_observed": 0.6149871805555313,
+          "mae": 1.025475748997162,
+          "rmse": 1.142562381168821,
+          "correlation": 0.6721889117806326
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 22,
+          "bias_forecast_minus_observed": -0.19928779762108295,
+          "mae": 0.8984142838827697,
+          "rmse": 1.0667808222432957,
+          "correlation": 0.5876290734687689
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": 0.05301596395760855,
+          "rmse": 0.040699942705000325
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": 0.1270614651143923,
+          "rmse": 0.0757815589255253
+        }
+      },
+      "2": {
+        "n_paired": 20,
+        "climatology": {
+          "n": 20,
+          "bias_forecast_minus_observed": -0.23163348131037828,
+          "mae": 0.6888818239702108,
+          "rmse": 0.7943955921485816,
+          "correlation": 0.8284825406578431
+        },
+        "full_anomaly_persistence": {
+          "n": 20,
+          "bias_forecast_minus_observed": 0.5517780760943369,
+          "mae": 0.7815540636372573,
+          "rmse": 1.0008712926790773,
+          "correlation": 0.7855294862319234
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 20,
+          "bias_forecast_minus_observed": -0.1773103321603413,
+          "mae": 0.6803252269386576,
+          "rmse": 0.774240462615921,
+          "correlation": 0.8324153578150659
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": 0.008556597031553204,
+          "rmse": 0.02015512953266052
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": 0.10122883669859972,
+          "rmse": 0.2266308300631562
+        }
+      },
+      "3": {
+        "n_paired": 22,
+        "climatology": {
+          "n": 22,
+          "bias_forecast_minus_observed": -0.9017551793242937,
+          "mae": 1.6821313808500191,
+          "rmse": 1.8635609499893593,
+          "correlation": 0.6686689979571427
+        },
+        "full_anomaly_persistence": {
+          "n": 22,
+          "bias_forecast_minus_observed": -0.40407865596092074,
+          "mae": 1.425504157258689,
+          "rmse": 1.8904100260784136,
+          "correlation": 0.5387684347563818
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 22,
+          "bias_forecast_minus_observed": -0.8762147219281423,
+          "mae": 1.660521009599118,
+          "rmse": 1.8717437836533921,
+          "correlation": 0.6560741696078163
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": 0.02161037125090104,
+          "rmse": -0.00818283366403283
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": -0.23501685234042902,
+          "rmse": 0.018666242425021462
+        }
+      },
+      "4": {
+        "n_paired": 21,
+        "climatology": {
+          "n": 21,
+          "bias_forecast_minus_observed": -1.1110513738915002,
+          "mae": 1.513523812141394,
+          "rmse": 1.9416160465944987,
+          "correlation": 0.14256094379951284
+        },
+        "full_anomaly_persistence": {
+          "n": 21,
+          "bias_forecast_minus_observed": -0.7872964613376081,
+          "mae": 1.7965862020690144,
+          "rmse": 2.4188986707933675,
+          "correlation": -0.4023795531292186
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 21,
+          "bias_forecast_minus_observed": -1.1099814581372527,
+          "mae": 1.5874113684097757,
+          "rmse": 2.036023039696395,
+          "correlation": -0.037310112488724304
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": -0.07388755626838162,
+          "rmse": -0.09440699310189649
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": 0.20917483365923872,
+          "rmse": 0.3828756310969723
+        }
+      },
+      "5": {
+        "n_paired": 23,
+        "climatology": {
+          "n": 23,
+          "bias_forecast_minus_observed": -0.4300683218170155,
+          "mae": 1.1681436811357997,
+          "rmse": 1.5007785434813528,
+          "correlation": -0.2626073500813153
+        },
+        "full_anomaly_persistence": {
+          "n": 23,
+          "bias_forecast_minus_observed": -0.18429635955308168,
+          "mae": 1.2642661287097576,
+          "rmse": 1.783726091999987,
+          "correlation": -0.2881509660540023
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 23,
+          "bias_forecast_minus_observed": -0.41314532200870074,
+          "mae": 1.2131767513348908,
+          "rmse": 1.5572923777549967,
+          "correlation": -0.6018730849017138
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": -0.045033070199091085,
+          "rmse": -0.05651383427364398
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": 0.05108937737486685,
+          "rmse": 0.22643371424499037
+        }
+      },
+      "6": {
+        "n_paired": 21,
+        "climatology": {
+          "n": 21,
+          "bias_forecast_minus_observed": -0.28708586020863536,
+          "mae": 0.4453879084980573,
+          "rmse": 0.5731465701636531,
+          "correlation": 0.54579941407557
+        },
+        "full_anomaly_persistence": {
+          "n": 21,
+          "bias_forecast_minus_observed": 0.6463396888134624,
+          "mae": 1.4950123437753162,
+          "rmse": 1.669201857764275,
+          "correlation": 0.5499563246830166
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 21,
+          "bias_forecast_minus_observed": -0.15503577803162522,
+          "mae": 0.43133149388390907,
+          "rmse": 0.5209252464620276,
+          "correlation": 0.5866347491941836
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": 0.01405641461414825,
+          "rmse": 0.052221323701625466
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": 1.0636808498914072,
+          "rmse": 1.1482766113022476
+        }
+      },
+      "7": {
+        "n_paired": 21,
+        "climatology": {
+          "n": 21,
+          "bias_forecast_minus_observed": -0.5082363811885959,
+          "mae": 0.9170084942444477,
+          "rmse": 1.047051857571191,
+          "correlation": 0.6563551050114421
+        },
+        "full_anomaly_persistence": {
+          "n": 21,
+          "bias_forecast_minus_observed": 0.8119219869617227,
+          "mae": 1.5558684380315424,
+          "rmse": 2.244445194086446,
+          "correlation": 0.061516742724774844
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 21,
+          "bias_forecast_minus_observed": -0.355490349279436,
+          "mae": 1.0650370467499979,
+          "rmse": 1.1772336891623485,
+          "correlation": 0.45321729041091124
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": -0.14802855250555014,
+          "rmse": -0.1301818315911576
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": 0.4908313912815445,
+          "rmse": 1.0672115049240973
+        }
+      },
+      "8": {
+        "n_paired": 22,
+        "climatology": {
+          "n": 22,
+          "bias_forecast_minus_observed": -0.39426685060383987,
+          "mae": 0.6059130996006618,
+          "rmse": 0.6896231078306183,
+          "correlation": 0.8480103218580475
+        },
+        "full_anomaly_persistence": {
+          "n": 22,
+          "bias_forecast_minus_observed": -0.14268654223540322,
+          "mae": 1.3294607360653572,
+          "rmse": 1.625410216347636,
+          "correlation": 0.28063862883702095
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 22,
+          "bias_forecast_minus_observed": -0.37382377237044134,
+          "mae": 0.6958851723710175,
+          "rmse": 0.7858789941013197,
+          "correlation": 0.7693747645640155
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": -0.0899720727703558,
+          "rmse": -0.09625588627070136
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": 0.6335755636943396,
+          "rmse": 0.8395312222463164
+        }
+      },
+      "9": {
+        "n_paired": 22,
+        "climatology": {
+          "n": 22,
+          "bias_forecast_minus_observed": -0.519212448649761,
+          "mae": 0.6463807791144622,
+          "rmse": 0.7904782561062118,
+          "correlation": 0.777207721352244
+        },
+        "full_anomaly_persistence": {
+          "n": 22,
+          "bias_forecast_minus_observed": -0.1547092169402182,
+          "mae": 0.7871826543976521,
+          "rmse": 0.8863531923452849,
+          "correlation": 0.46594290737386784
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 22,
+          "bias_forecast_minus_observed": -0.49807957791989926,
+          "mae": 0.6643953334780379,
+          "rmse": 0.798467199537301,
+          "correlation": 0.7555801084399864
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": -0.018014554363575686,
+          "rmse": -0.007988943431089246
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": 0.1227873209196142,
+          "rmse": 0.08788599280798381
+        }
+      },
+      "10": {
+        "n_paired": 18,
+        "climatology": {
+          "n": 18,
+          "bias_forecast_minus_observed": -0.9616864716371201,
+          "mae": 0.9646513201762228,
+          "rmse": 1.2194628859367154,
+          "correlation": 0.33659361938457616
+        },
+        "full_anomaly_persistence": {
+          "n": 18,
+          "bias_forecast_minus_observed": -0.2412026879794702,
+          "mae": 0.49207105643900423,
+          "rmse": 0.6141967047841468,
+          "correlation": 0.7003647713413871
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 18,
+          "bias_forecast_minus_observed": -0.9411475818374306,
+          "mae": 0.9436691506521213,
+          "rmse": 1.1882081429630724,
+          "correlation": 0.3730460272863797
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": 0.02098216952410148,
+          "rmse": 0.031254742973642946
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": -0.4515980942131171,
+          "rmse": -0.5740114381789256
+        }
+      },
+      "11": {
+        "n_paired": 17,
+        "climatology": {
+          "n": 17,
+          "bias_forecast_minus_observed": -0.857554564629259,
+          "mae": 0.857554564629259,
+          "rmse": 1.048759509560109,
+          "correlation": 0.28686408619180903
+        },
+        "full_anomaly_persistence": {
+          "n": 17,
+          "bias_forecast_minus_observed": -0.21733785092460245,
+          "mae": 0.4356126727582313,
+          "rmse": 0.49077594028583377,
+          "correlation": 0.7136288550280088
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 17,
+          "bias_forecast_minus_observed": -0.8157923930430018,
+          "mae": 0.841126152943418,
+          "rmse": 1.0119476848169169,
+          "correlation": 0.3111360195923879
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": 0.016428411685841082,
+          "rmse": 0.03681182474319211
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": -0.4055134801851867,
+          "rmse": -0.5211717445310831
+        }
+      },
+      "12": {
+        "n_paired": 18,
+        "climatology": {
+          "n": 18,
+          "bias_forecast_minus_observed": -0.48085185667944147,
+          "mae": 0.7259468918564259,
+          "rmse": 0.8307521279059709,
+          "correlation": 0.05034663687119894
+        },
+        "full_anomaly_persistence": {
+          "n": 18,
+          "bias_forecast_minus_observed": 0.1789315253179413,
+          "mae": 0.7791420383656127,
+          "rmse": 0.8629899030370967,
+          "correlation": 0.09876984204312994
+        },
+        "fitted_anomaly_relaxation": {
+          "n": 18,
+          "bias_forecast_minus_observed": -0.45006344876840126,
+          "mae": 0.7177024190508915,
+          "rmse": 0.8130413329720618,
+          "correlation": 0.06577822759985806
+        },
+        "improvement_relaxation_over_climatology": {
+          "mae": 0.00824447280553442,
+          "rmse": 0.017710794933909035
+        },
+        "improvement_relaxation_over_full_persistence": {
+          "mae": 0.061439619314721194,
+          "rmse": 0.049948570065034836
+        }
+      }
+    }
+  },
+  "beta_evolution_by_issue_year": {
+    "2008": {
+      "month_1": {
+        "fitting_equation": "sum(current_anomaly * future_target_anomaly) / sum(current_anomaly^2); zero intercept",
+        "n_training_rows": 0,
+        "n_distinct_training_years": 0,
+        "training_years": [],
+        "minimum_training_years": 3,
+        "raw_beta": null,
+        "constrained_beta": null,
+        "constraint": "0 <= beta <= 1",
+        "is_valid": false,
+        "training_cases_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "month_2": {
+        "fitting_equation": "sum(current_anomaly * future_target_anomaly) / sum(current_anomaly^2); zero intercept",
+        "n_training_rows": 0,
+        "n_distinct_training_years": 0,
+        "training_years": [],
+        "minimum_training_years": 3,
+        "raw_beta": null,
+        "constrained_beta": null,
+        "constraint": "0 <= beta <= 1",
+        "is_valid": false,
+        "training_cases_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "month_3": {
+        "fitting_equation": "sum(current_anomaly * future_target_anomaly) / sum(current_anomaly^2); zero intercept",
+        "n_training_rows": 0,
+        "n_distinct_training_years": 0,
+        "training_years": [],
+        "minimum_training_years": 3,
+        "raw_beta": null,
+        "constrained_beta": null,
+        "constraint": "0 <= beta <= 1",
+        "is_valid": false,
+        "training_cases_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      }
+    },
+    "2009": {
+      "month_1": {
+        "fitting_equation": "sum(current_anomaly * future_target_anomaly) / sum(current_anomaly^2); zero intercept",
+        "n_training_rows": 0,
+        "n_distinct_training_years": 0,
+        "training_years": [],
+        "minimum_training_years": 3,
+        "raw_beta": null,
+        "constrained_beta": null,
+        "constraint": "0 <= beta <= 1",
+        "is_valid": false,
+        "training_cases_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "month_2": {
+        "fitting_equation": "sum(current_anomaly * future_target_anomaly) / sum(current_anomaly^2); zero intercept",
+        "n_training_rows": 0,
+        "n_distinct_training_years": 0,
+        "training_years": [],
+        "minimum_training_years": 3,
+        "raw_beta": null,
+        "constrained_beta": null,
+        "constraint": "0 <= beta <= 1",
+        "is_valid": false,
+        "training_cases_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "month_3": {
+        "fitting_equation": "sum(current_anomaly * future_target_anomaly) / sum(current_anomaly^2); zero intercept",
+        "n_training_rows": 0,
+        "n_distinct_training_years": 0,
+        "training_years": [],
+        "minimum_training_years": 3,
+        "raw_beta": null,
+        "constrained_beta": null,
+        "constraint": "0 <= beta <= 1",
+        "is_valid": false,
+        "training_cases_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      }
+    },
+    "2010": {
+      "month_1": {
+        "fitting_equation": "sum(current_anomaly * future_target_anomaly) / sum(current_anomaly^2); zero intercept",
+        "n_training_rows": 0,
+        "n_distinct_training_years": 0,
+        "training_years": [],
+        "minimum_training_years": 3,
+        "raw_beta": null,
+        "constrained_beta": null,
+        "constraint": "0 <= beta <= 1",
+        "is_valid": false,
+        "training_cases_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "month_2": {
+        "fitting_equation": "sum(current_anomaly * future_target_anomaly) / sum(current_anomaly^2); zero intercept",
+        "n_training_rows": 0,
+        "n_distinct_training_years": 0,
+        "training_years": [],
+        "minimum_training_years": 3,
+        "raw_beta": null,
+        "constrained_beta": null,
+        "constraint": "0 <= beta <= 1",
+        "is_valid": false,
+        "training_cases_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "month_3": {
+        "fitting_equation": "sum(current_anomaly * future_target_anomaly) / sum(current_anomaly^2); zero intercept",
+        "n_training_rows": 0,
+        "n_distinct_training_years": 0,
+        "training_years": [],
+        "minimum_training_years": 3,
+        "raw_beta": null,
+        "constrained_beta": null,
+        "constraint": "0 <= beta <= 1",
+        "is_valid": false,
+        "training_cases_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      }
+    },
+    "2011": {
+      "month_1": {
+        "fitting_equation": "sum(current_anomaly * future_target_anomaly) / sum(current_anomaly^2); zero intercept",
+        "n_training_rows": 0,
+        "n_distinct_training_years": 0,
+        "training_years": [],
+        "minimum_training_years": 3,
+        "raw_beta": null,
+        "constrained_beta": null,
+        "constraint": "0 <= beta <= 1",
+        "is_valid": false,
+        "training_cases_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "month_2": {
+        "fitting_equation": "sum(current_anomaly * future_target_anomaly) / sum(current_anomaly^2); zero intercept",
+        "n_training_rows": 0,
+        "n_distinct_training_years": 0,
+        "training_years": [],
+        "minimum_training_years": 3,
+        "raw_beta": null,
+        "constrained_beta": null,
+        "constraint": "0 <= beta <= 1",
+        "is_valid": false,
+        "training_cases_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "month_3": {
+        "fitting_equation": "sum(current_anomaly * future_target_anomaly) / sum(current_anomaly^2); zero intercept",
+        "n_training_rows": 0,
+        "n_distinct_training_years": 0,
+        "training_years": [],
+        "minimum_training_years": 3,
+        "raw_beta": null,
+        "constrained_beta": null,
+        "constraint": "0 <= beta <= 1",
+        "is_valid": false,
+        "training_cases_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      }
+    },
+    "2012": {
+      "month_1": {
+        "fitting_equation": "sum(current_anomaly * future_target_anomaly) / sum(current_anomaly^2); zero intercept",
+        "n_training_rows": 36,
+        "n_distinct_training_years": 1,
+        "training_years": [
+          2011
+        ],
+        "minimum_training_years": 3,
+        "raw_beta": 0.5202980535428613,
+        "constrained_beta": 0.5202980535428613,
+        "constraint": "0 <= beta <= 1",
+        "is_valid": false,
+        "training_cases_sha256": "80aae3fe81eefbab68b715c8668915c083243587429a7ba200c3e607afbd6ebb"
+      },
+      "month_2": {
+        "fitting_equation": "sum(current_anomaly * future_target_anomaly) / sum(current_anomaly^2); zero intercept",
+        "n_training_rows": 32,
+        "n_distinct_training_years": 1,
+        "training_years": [
+          2011
+        ],
+        "minimum_training_years": 3,
+        "raw_beta": -0.020481942090241755,
+        "constrained_beta": 0.0,
+        "constraint": "0 <= beta <= 1",
+        "is_valid": false,
+        "training_cases_sha256": "fce144500965e3623ede79a3a248220b794faf5e88b0b9e5ad28d378013741bf"
+      },
+      "month_3": {
+        "fitting_equation": "sum(current_anomaly * future_target_anomaly) / sum(current_anomaly^2); zero intercept",
+        "n_training_rows": 27,
+        "n_distinct_training_years": 1,
+        "training_years": [
+          2011
+        ],
+        "minimum_training_years": 3,
+        "raw_beta": 0.4082295429590498,
+        "constrained_beta": 0.4082295429590498,
+        "constraint": "0 <= beta <= 1",
+        "is_valid": false,
+        "training_cases_sha256": "14003f046a6da0a8cd7dd76350246a68966b98553aa0d88202b2c14019e3e009"
+      }
+    },
+    "2013": {
+      "month_1": {
+        "fitting_equation": "sum(current_anomaly * future_target_anomaly) / sum(current_anomaly^2); zero intercept",
+        "n_training_rows": 84,
+        "n_distinct_training_years": 2,
+        "training_years": [
+          2011,
+          2012
+        ],
+        "minimum_training_years": 3,
+        "raw_beta": 0.3160093252764901,
+        "constrained_beta": 0.3160093252764901,
+        "constraint": "0 <= beta <= 1",
+        "is_valid": false,
+        "training_cases_sha256": "ff59e83265cd72d2288694172f684265dd8dbf83d1f7686de63a43056eb6ac44"
+      },
+      "month_2": {
+        "fitting_equation": "sum(current_anomaly * future_target_anomaly) / sum(current_anomaly^2); zero intercept",
+        "n_training_rows": 80,
+        "n_distinct_training_years": 2,
+        "training_years": [
+          2011,
+          2012
+        ],
+        "minimum_training_years": 3,
+        "raw_beta": 0.22947895422245107,
+        "constrained_beta": 0.22947895422245107,
+        "constraint": "0 <= beta <= 1",
+        "is_valid": false,
+        "training_cases_sha256": "77998833cc22e2f1b9e85dc4b0be0f88b5a5776f338448a3bf6f74979d042240"
+      },
+      "month_3": {
+        "fitting_equation": "sum(current_anomaly * future_target_anomaly) / sum(current_anomaly^2); zero intercept",
+        "n_training_rows": 76,
+        "n_distinct_training_years": 2,
+        "training_years": [
+          2011,
+          2012
+        ],
+        "minimum_training_years": 3,
+        "raw_beta": 0.25206803809894845,
+        "constrained_beta": 0.25206803809894845,
+        "constraint": "0 <= beta <= 1",
+        "is_valid": false,
+        "training_cases_sha256": "065ac915a7295a550c6786438fcb1b13a0fb753220402097fb94d24d4ad2b8f3"
+      }
+    },
+    "2014": {
+      "month_1": {
+        "fitting_equation": "sum(current_anomaly * future_target_anomaly) / sum(current_anomaly^2); zero intercept",
+        "n_training_rows": 136,
+        "n_distinct_training_years": 3,
+        "training_years": [
+          2011,
+          2012,
+          2013
+        ],
+        "minimum_training_years": 3,
+        "raw_beta": 0.4549841917343982,
+        "constrained_beta": 0.4549841917343982,
+        "constraint": "0 <= beta <= 1",
+        "is_valid": true,
+        "training_cases_sha256": "1f92aea4ca280fa03a06dc0d0ff819f311548e2ae969426691160c00482443ec"
+      },
+      "month_2": {
+        "fitting_equation": "sum(current_anomaly * future_target_anomaly) / sum(current_anomaly^2); zero intercept",
+        "n_training_rows": 132,
+        "n_distinct_training_years": 3,
+        "training_years": [
+          2011,
+          2012,
+          2013
+        ],
+        "minimum_training_years": 3,
+        "raw_beta": 0.0634772219644174,
+        "constrained_beta": 0.0634772219644174,
+        "constraint": "0 <= beta <= 1",
+        "is_valid": true,
+        "training_cases_sha256": "9ecdafcc2b07353d035597db05217ac544c529b016bf14f95b937d38139b42bb"
+      },
+      "month_3": {
+        "fitting_equation": "sum(current_anomaly * future_target_anomaly) / sum(current_anomaly^2); zero intercept",
+        "n_training_rows": 128,
+        "n_distinct_training_years": 3,
+        "training_years": [
+          2011,
+          2012,
+          2013
+        ],
+        "minimum_training_years": 3,
+        "raw_beta": -0.13844483672249952,
+        "constrained_beta": 0.0,
+        "constraint": "0 <= beta <= 1",
+        "is_valid": true,
+        "training_cases_sha256": "2aa711ce2f2745d3225926f6cd344fc9ddef4ef2c841511b0cc1aa94ea53b00e"
+      }
+    },
+    "2015": {
+      "month_1": {
+        "fitting_equation": "sum(current_anomaly * future_target_anomaly) / sum(current_anomaly^2); zero intercept",
+        "n_training_rows": 189,
+        "n_distinct_training_years": 4,
+        "training_years": [
+          2011,
+          2012,
+          2013,
+          2014
+        ],
+        "minimum_training_years": 3,
+        "raw_beta": 0.5420171911367618,
+        "constrained_beta": 0.5420171911367618,
+        "constraint": "0 <= beta <= 1",
+        "is_valid": true,
+        "training_cases_sha256": "b05342239154ab1a01bba34d74f6dce57a3b40abd2fa3044ce10a5cbf6be95cf"
+      },
+      "month_2": {
+        "fitting_equation": "sum(current_anomaly * future_target_anomaly) / sum(current_anomaly^2); zero intercept",
+        "n_training_rows": 184,
+        "n_distinct_training_years": 4,
+        "training_years": [
+          2011,
+          2012,
+          2013,
+          2014
+        ],
+        "minimum_training_years": 3,
+        "raw_beta": 0.2361180758229335,
+        "constrained_beta": 0.2361180758229335,
+        "constraint": "0 <= beta <= 1",
+        "is_valid": true,
+        "training_cases_sha256": "07e6e1f90210f0b967629dda95bdfb3552a0e0025d0eef416489cec48cfe4c51"
+      },
+      "month_3": {
+        "fitting_equation": "sum(current_anomaly * future_target_anomaly) / sum(current_anomaly^2); zero intercept",
+        "n_training_rows": 180,
+        "n_distinct_training_years": 4,
+        "training_years": [
+          2011,
+          2012,
+          2013,
+          2014
+        ],
+        "minimum_training_years": 3,
+        "raw_beta": 0.06976450769920721,
+        "constrained_beta": 0.06976450769920721,
+        "constraint": "0 <= beta <= 1",
+        "is_valid": true,
+        "training_cases_sha256": "1b47f2c0080299c15fc2d8212482d6fad5cc035678b47add584dd04d0dfd6d40"
+      }
+    },
+    "2016": {
+      "month_1": {
+        "fitting_equation": "sum(current_anomaly * future_target_anomaly) / sum(current_anomaly^2); zero intercept",
+        "n_training_rows": 240,
+        "n_distinct_training_years": 5,
+        "training_years": [
+          2011,
+          2012,
+          2013,
+          2014,
+          2015
+        ],
+        "minimum_training_years": 3,
+        "raw_beta": 0.5667557012054306,
+        "constrained_beta": 0.5667557012054306,
+        "constraint": "0 <= beta <= 1",
+        "is_valid": true,
+        "training_cases_sha256": "9d0925aa8a4153bc8a5d333f8c35a74a4369f5fc0bf47fa0617250070ab9f2b4"
+      },
+      "month_2": {
+        "fitting_equation": "sum(current_anomaly * future_target_anomaly) / sum(current_anomaly^2); zero intercept",
+        "n_training_rows": 235,
+        "n_distinct_training_years": 5,
+        "training_years": [
+          2011,
+          2012,
+          2013,
+          2014,
+          2015
+        ],
+        "minimum_training_years": 3,
+        "raw_beta": 0.261606446063211,
+        "constrained_beta": 0.261606446063211,
+        "constraint": "0 <= beta <= 1",
+        "is_valid": true,
+        "training_cases_sha256": "efb4db56f7100937e103bc3a5cc2196888aa13894b9155dd4424eff796346f64"
+      },
+      "month_3": {
+        "fitting_equation": "sum(current_anomaly * future_target_anomaly) / sum(current_anomaly^2); zero intercept",
+        "n_training_rows": 231,
+        "n_distinct_training_years": 5,
+        "training_years": [
+          2011,
+          2012,
+          2013,
+          2014,
+          2015
+        ],
+        "minimum_training_years": 3,
+        "raw_beta": 0.0749353049291614,
+        "constrained_beta": 0.0749353049291614,
+        "constraint": "0 <= beta <= 1",
+        "is_valid": true,
+        "training_cases_sha256": "ad3109ae99180bb0cecf8063525ab003eb4f28e243c536e7774573ceb191c29c"
+      }
+    },
+    "2017": {
+      "month_1": {
+        "fitting_equation": "sum(current_anomaly * future_target_anomaly) / sum(current_anomaly^2); zero intercept",
+        "n_training_rows": 292,
+        "n_distinct_training_years": 6,
+        "training_years": [
+          2011,
+          2012,
+          2013,
+          2014,
+          2015,
+          2016
+        ],
+        "minimum_training_years": 3,
+        "raw_beta": 0.5584638500184641,
+        "constrained_beta": 0.5584638500184641,
+        "constraint": "0 <= beta <= 1",
+        "is_valid": true,
+        "training_cases_sha256": "6f0cf4a7b894ccdd8564f1499d9529d7280224ee89408eca5739b5cba943ab74"
+      },
+      "month_2": {
+        "fitting_equation": "sum(current_anomaly * future_target_anomaly) / sum(current_anomaly^2); zero intercept",
+        "n_training_rows": 288,
+        "n_distinct_training_years": 6,
+        "training_years": [
+          2011,
+          2012,
+          2013,
+          2014,
+          2015,
+          2016
+        ],
+        "minimum_training_years": 3,
+        "raw_beta": 0.28284095177520596,
+        "constrained_beta": 0.28284095177520596,
+        "constraint": "0 <= beta <= 1",
+        "is_valid": true,
+        "training_cases_sha256": "ca5b78da3dc0859594e53c21e4c703ddf12121ad3de824537dd1f711431e16c6"
+      },
+      "month_3": {
+        "fitting_equation": "sum(current_anomaly * future_target_anomaly) / sum(current_anomaly^2); zero intercept",
+        "n_training_rows": 283,
+        "n_distinct_training_years": 6,
+        "training_years": [
+          2011,
+          2012,
+          2013,
+          2014,
+          2015,
+          2016
+        ],
+        "minimum_training_years": 3,
+        "raw_beta": 0.16675721057562612,
+        "constrained_beta": 0.16675721057562612,
+        "constraint": "0 <= beta <= 1",
+        "is_valid": true,
+        "training_cases_sha256": "b80d6e6d5fe9eaf74079477e0d286cb6f8eabcaa5a28af8b7d8723fbd54ba2b8"
+      }
+    },
+    "2018": {
+      "month_1": {
+        "fitting_equation": "sum(current_anomaly * future_target_anomaly) / sum(current_anomaly^2); zero intercept",
+        "n_training_rows": 344,
+        "n_distinct_training_years": 7,
+        "training_years": [
+          2011,
+          2012,
+          2013,
+          2014,
+          2015,
+          2016,
+          2017
+        ],
+        "minimum_training_years": 3,
+        "raw_beta": 0.57061260527964,
+        "constrained_beta": 0.57061260527964,
+        "constraint": "0 <= beta <= 1",
+        "is_valid": true,
+        "training_cases_sha256": "7048d4492b80625e029a83da1b5be4b4a09e79a3783d8ec6bc5d37fe1faa5731"
+      },
+      "month_2": {
+        "fitting_equation": "sum(current_anomaly * future_target_anomaly) / sum(current_anomaly^2); zero intercept",
+        "n_training_rows": 340,
+        "n_distinct_training_years": 7,
+        "training_years": [
+          2011,
+          2012,
+          2013,
+          2014,
+          2015,
+          2016,
+          2017
+        ],
+        "minimum_training_years": 3,
+        "raw_beta": 0.2986843411545474,
+        "constrained_beta": 0.2986843411545474,
+        "constraint": "0 <= beta <= 1",
+        "is_valid": true,
+        "training_cases_sha256": "17bdca03b9e941b9e6faf1f39693b5c692788296ce440ecf83b641c0fb2af8ca"
+      },
+      "month_3": {
+        "fitting_equation": "sum(current_anomaly * future_target_anomaly) / sum(current_anomaly^2); zero intercept",
+        "n_training_rows": 336,
+        "n_distinct_training_years": 7,
+        "training_years": [
+          2011,
+          2012,
+          2013,
+          2014,
+          2015,
+          2016,
+          2017
+        ],
+        "minimum_training_years": 3,
+        "raw_beta": 0.17781425242157836,
+        "constrained_beta": 0.17781425242157836,
+        "constraint": "0 <= beta <= 1",
+        "is_valid": true,
+        "training_cases_sha256": "ccf32aba3ebed52c2d4dcedc302b21afeda65d304e51e0f1e65b4c977ed96528"
+      }
+    }
+  },
+  "forecast_target_artifact_used_by_model": false,
+  "source_provenance_verification_side": {
+    "canonical_input_sha256": {
+      "data\\interim\\bd37710e-canonical.csv": "2001b4185119fde3d1d8f2dd15d958df8cce94521c60e4afb96e7e928f07d7c5",
+      "data\\interim\\e68063b9-canonical.csv": "36829d0a10bf519a3a84e302e7b6d9f4b83b760f314dd0256e932d330935a7f1",
+      "data\\interim\\e1b6e387-canonical.csv": "f39af534992cf085e1c252281a7703a479ae7de8395b525e1b00418edb4822fe"
+    },
+    "source_dataset_ids": [
+      "bd37710e-6a53-49f0-9a07-6973408a3342",
+      "e1b6e387-1bd6-444a-8de9-035df0b8baec",
+      "e68063b9-2e52-44df-8b6f-a3deb37b76cb"
+    ],
+    "source_files": [
+      "SBAS_2012_2013_2014_2015.csv",
+      "WSB_2008_2009_2010_2011.csv",
+      "sbas-2016_2017_2018.csv"
+    ]
+  }
+}

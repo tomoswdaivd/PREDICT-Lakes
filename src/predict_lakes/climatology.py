@@ -116,53 +116,77 @@ def forecast_rows_from_daily(
     daily: dict[date, float], state_date: date, issue_year: int, *, minimum_training_years: int,
     window_minimum_valid_days: int,
 ) -> list[dict[str, Any]]:
-    observed_years = sorted({day.year for day in daily if day.year < issue_year})
-    candidate_years = list(range(min(observed_years), issue_year)) if observed_years else []
     rows: list[dict[str, Any]] = []
     for index in (1, 2, 3):
         target_start, target_end = target_window_bounds(state_date, index)
-        training_windows: list[dict[str, Any]] = []
-        unavailable_leap_years: list[int] = []
-        for year in candidate_years:
-            bounds = equivalent_window_bounds(target_start, year)
-            if bounds is None:
-                unavailable_leap_years.append(year)
-                continue
-            start, end = bounds
-            dates = [start + timedelta(days=offset) for offset in range(WINDOW_DAYS)]
-            values = [daily[day] for day in dates if day in daily and day.year < issue_year]
-            if len(values) >= window_minimum_valid_days:
-                training_windows.append({
-                    "year": year, "start_date": start.isoformat(), "end_date": end.isoformat(),
-                    "valid_days": len(values), "mean_temperature": mean(values),
-                })
-        training_years = [window["year"] for window in training_windows]
-        training_means = [window["mean_temperature"] for window in training_windows]
-        valid = len(training_means) >= minimum_training_years
+        climatology = historical_window_climatology(
+            daily, target_start, issue_year,
+            minimum_training_years=minimum_training_years,
+            window_minimum_valid_days=window_minimum_valid_days,
+        )
         rows.append({
             "target_name": f"month_{index}",
             "lead_days": {"start": (index - 1) * WINDOW_DAYS + 1, "end": index * WINDOW_DAYS},
             "target_window_start": target_start.isoformat(),
             "target_window_end": target_end.isoformat(),
-            "candidate_previous_years": candidate_years,
-            "n_candidate_previous_years": len(candidate_years),
-            "training_years": training_years,
-            "n_valid_training_years": len(training_years),
+            "candidate_previous_years": climatology["candidate_previous_years"],
+            "n_candidate_previous_years": climatology["n_candidate_previous_years"],
+            "training_years": climatology["training_years"],
+            "n_valid_training_years": climatology["n_valid_training_years"],
             "minimum_training_years": minimum_training_years,
-            "is_valid": valid,
-            "predicted_mean_temperature": mean(training_means) if valid else None,
-            "historical_window_standard_deviation": stdev(training_means) if len(training_means) > 1 else None,
+            "is_valid": climatology["is_valid"],
+            "predicted_mean_temperature": climatology["climatological_mean"],
+            "historical_window_standard_deviation": climatology["historical_window_standard_deviation"],
             "spread_interpretation": "descriptive sample standard deviation; not a calibrated probabilistic forecast",
             "unit": "degC",
             "site": {"lake_id": "windermere", "basin": "south"},
             "variable": "water_temperature",
             "depth_m": 2.0,
-            "training_windows": training_windows,
-            "training_windows_sha256": _stable_hash(training_windows),
+            "training_windows": climatology["training_windows"],
+            "training_windows_sha256": climatology["training_windows_sha256"],
             "calendar_alignment": "same target-window start month/day in each prior year, followed by 30 consecutive UTC dates",
-            "unavailable_february_29_start_years": unavailable_leap_years,
+            "unavailable_february_29_start_years": climatology["unavailable_february_29_start_years"],
         })
     return rows
+
+
+def historical_window_climatology(
+    daily: dict[date, float], window_start: date, issue_year: int, *,
+    minimum_training_years: int, window_minimum_valid_days: int,
+) -> dict[str, Any]:
+    """Summarise a matched 30-day window over calendar years before issue year."""
+    observed_years = sorted({day.year for day in daily if day.year < issue_year})
+    candidate_years = list(range(min(observed_years), issue_year)) if observed_years else []
+    training_windows: list[dict[str, Any]] = []
+    unavailable_leap_years: list[int] = []
+    for year in candidate_years:
+        bounds = equivalent_window_bounds(window_start, year)
+        if bounds is None:
+            unavailable_leap_years.append(year)
+            continue
+        start, end = bounds
+        dates = [start + timedelta(days=offset) for offset in range(WINDOW_DAYS)]
+        values = [daily[day] for day in dates if day in daily and day.year < issue_year]
+        if len(values) >= window_minimum_valid_days:
+            training_windows.append({
+                "year": year, "start_date": start.isoformat(), "end_date": end.isoformat(),
+                "valid_days": len(values), "mean_temperature": mean(values),
+            })
+    training_years = [window["year"] for window in training_windows]
+    training_means = [window["mean_temperature"] for window in training_windows]
+    valid = len(training_means) >= minimum_training_years
+    return {
+        "candidate_previous_years": candidate_years,
+        "n_candidate_previous_years": len(candidate_years),
+        "training_years": training_years,
+        "n_valid_training_years": len(training_years),
+        "is_valid": valid,
+        "climatological_mean": mean(training_means) if valid else None,
+        "historical_window_standard_deviation": stdev(training_means) if len(training_means) > 1 else None,
+        "training_windows": training_windows,
+        "training_windows_sha256": _stable_hash(training_windows),
+        "unavailable_february_29_start_years": unavailable_leap_years,
+    }
 
 
 def forecast_climatology(

@@ -1,0 +1,20 @@
+{
+  "component_name": "forecast_anomaly_persistence",
+  "purpose": "Add the current leakage-safe 30-day thermal anomaly unchanged to each expanding prior-year target climatology.",
+  "required_inputs": ["canonical observation CSV files", "leakage-safe forecast_state.json", "output path"],
+  "optional_inputs": ["minimum_training_years", "daily_minimum_hours", "window_minimum_valid_days"],
+  "parameters": {
+    "anomaly_coefficient": "fixed at 1.0; not fitted",
+    "minimum_training_years": "default 3",
+    "daily_minimum_hours": "default 18 distinct valid hourly observations",
+    "window_minimum_valid_days": "default 27 of 30 valid daily means"
+  },
+  "outputs": ["anomaly_persistence_forecast.json using the common three-horizon forecast schema"],
+  "data_formats": ["canonical CSV", "forecast-state JSON", "forecast JSON"],
+  "expected_units": {"temperature_and_anomaly": "degC", "depth": "m", "timestamps": "UTC", "windows": "UTC calendar dates"},
+  "failure_conditions": ["invalid or mismatched forecast state", "state's claimed last complete date is not complete in legal canonical observations", "timezone-naive timestamp", "unknown availability in data_available_time mode", "duplicate eligible timestamp", "invalid completeness or history parameter", "malformed canonical input"],
+  "provenance_generated": ["forecast-state hash", "eligible historical and recent legal observation-slice hashes", "recent-window dates and completeness", "historical years and windows", "model version and fixed coefficient", "inherited availability assumption"],
+  "scientific_assumptions": ["current anomaly is recent 30-day mean minus matched expanding historical climatology", "recent and historical windows require 27 of 30 daily means", "climatologies use observations from years strictly earlier than issue year", "the anomaly is added unchanged to all three target climatologies", "verification targets are not an input"],
+  "entry_point": "components/forecast_anomaly_persistence/run.py",
+  "manifest_status": "internal portability aid; not an official LifeWatch manifest"
+}

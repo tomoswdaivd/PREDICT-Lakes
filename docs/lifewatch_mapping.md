@@ -14,6 +14,7 @@ Each local component has a single CLI entry point, ordinary Python-callable core
 | `build_forecast_state` | create issue-time-limited model input | canonical observations, issue time, availability mode, completeness threshold | JSON state and daily-history CSV |
 | `build_forecast_targets` | construct verification-side observed targets | canonical observations, forecast-state record, daily/window completeness thresholds | JSON containing three non-overlapping 30-day observed target windows |
 | `forecast_climatology` | expanding historical seasonal baseline | canonical observations, leakage-safe forecast-state record, completeness and minimum-history parameters | JSON containing three common-schema mean-temperature forecasts |
+| `forecast_anomaly_persistence` | unfitted full persistence of the current 30-day thermal anomaly | canonical observations, leakage-safe forecast-state record, completeness and minimum-history parameters | JSON containing three common-schema mean-temperature forecasts plus current-anomaly provenance |
 | `verify_forecast` | compare forecasts with later observed targets | climatology forecast records and independently constructed observed targets | CSV forecast-target pairs and JSON diagnostic summary (prototype hindcast implementation) |
 | `report` | planned | standard outputs | planned |
 
@@ -22,6 +23,8 @@ The JSON files in each component directory are internal portability aids, not of
 The intended branches are explicitly separate: `standardise_observations -> build_forecast_state -> forecast` supplies only issue-time-legal information, while `standardise_observations -> build_forecast_targets -> verify_forecast` supplies future observations only to verification. `build_forecast_targets` output must not be connected to the forecast component input.
 
 The implemented forecast branch is `standardise_observations -> build_forecast_state -> forecast_climatology`. Its wrapper accepts canonical CSV and forecast-state JSON, but no target artifact. It filters canonical rows to calendar years strictly earlier than the issue year before daily aggregation and provenance hashing. The JSON output carries model configuration, exact target windows, training years and window means, inherited availability assumptions, source identifiers, and hashes. The weekly hindcast runner is reproducible experiment orchestration around this component; its verification join occurs only after all forecast records have been created.
+
+`forecast_anomaly_persistence` is swappable with `forecast_climatology` at the same conceptual forecast step and emits the same per-horizon forecast fields. It additionally records the legally available recent 30-day window, its matched historical climatology, and the fixed anomaly adjustment. Its standalone wrapper filters recent observations by issue-time availability and historical climatologies by issue year before aggregation and hashing. Paired hindcast diagnostics remain verification-side outputs and are not component inputs.
 
 ## Unresolved compatibility questions
 

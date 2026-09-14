@@ -11,8 +11,9 @@ from pathlib import Path
 from statistics import mean
 from typing import Any, Iterable
 
+from .window_definition import WINDOW_DAYS, target_window_bounds
+
 DAILY_MIN_HOURS = 18
-WINDOW_DAYS = 30
 WINDOW_MIN_VALID_DAYS = 27
 TARGET = {"lake_id": "windermere", "basin": "south", "variable": "water_temperature", "depth_m": "2.0"}
 
@@ -81,8 +82,7 @@ def _load_state(forecast_state: dict[str, Any] | str | Path) -> tuple[dict[str, 
 
 
 def _window(daily: dict[date, float], state_date: date, index: int, minimum_valid_days: int, provenance: dict[str, Any]) -> dict[str, Any]:
-    start = state_date + timedelta(days=(index - 1) * WINDOW_DAYS + 1)
-    end = start + timedelta(days=WINDOW_DAYS - 1)
+    start, end = target_window_bounds(state_date, index)
     dates = [start + timedelta(days=offset) for offset in range(WINDOW_DAYS)]
     valid = [(day, daily[day]) for day in dates if day in daily]
     source_days = provenance["daily_sources"]

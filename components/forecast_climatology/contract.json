@@ -1,0 +1,19 @@
+{
+  "component_name": "forecast_climatology",
+  "purpose": "Predict three 30-day mean 2 m temperature targets using direct matched windows from strictly earlier calendar years.",
+  "required_inputs": ["canonical observation CSV files", "leakage-safe forecast_state.json", "output path"],
+  "optional_inputs": ["minimum_training_years", "daily_minimum_hours", "window_minimum_valid_days"],
+  "parameters": {
+    "minimum_training_years": "default 3",
+    "daily_minimum_hours": "default 18 distinct valid hourly observations",
+    "window_minimum_valid_days": "default 27 of 30 valid daily means"
+  },
+  "outputs": ["climatology_forecast.json containing three common-schema forecast records"],
+  "data_formats": ["canonical CSV", "forecast-state JSON", "forecast JSON"],
+  "expected_units": {"temperature": "degC", "depth": "m", "timestamps": "UTC", "target_windows": "UTC calendar dates"},
+  "failure_conditions": ["invalid or mismatched forecast state", "timezone-naive timestamp", "duplicate eligible training timestamp", "invalid completeness or minimum-history parameter", "malformed canonical input"],
+  "provenance_generated": ["forecast-state hash", "eligible training-observation-slice hash", "source identifiers", "training years and historical windows", "model version and configuration", "inherited availability assumption"],
+  "scientific_assumptions": ["training observations have calendar year strictly earlier than forecast issue year", "historical windows use the current target start month/day and 30 consecutive UTC dates", "a February 29 start has no equivalent in a non-leap year", "no seasonal smoother", "historical spread is descriptive only", "verification targets are not an input"],
+  "entry_point": "components/forecast_climatology/run.py",
+  "manifest_status": "internal portability aid; not an official LifeWatch manifest"
+}

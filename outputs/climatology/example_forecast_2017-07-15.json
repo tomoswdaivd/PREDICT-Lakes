@@ -1,0 +1,387 @@
+{
+  "component": "forecast_climatology",
+  "workflow_role": "forecast_side_only",
+  "model": {
+    "identifier": "expanding_prior_year_window_climatology",
+    "version": "1.0",
+    "configuration": {
+      "minimum_training_years": 3,
+      "daily_minimum_hours": 18,
+      "window_minimum_valid_days": 27,
+      "seasonal_smoother": null
+    }
+  },
+  "forecast_issue_time": "2017-07-15T12:30:00+00:00",
+  "forecast_state_date": "2017-07-14",
+  "availability_mode": "observation_time_proxy",
+  "availability_assumption": "Historical data_available_time is unknown; observation_time is used as an explicit pseudo-operational availability proxy.",
+  "target_definition": "three non-overlapping future 30-day mean 2 m water-temperature lead windows anchored after forecast_state_date",
+  "training_year_rule": "only observations with calendar year < issue year 2017",
+  "forecast_target_input_used": false,
+  "forecasts": [
+    {
+      "target_name": "month_1",
+      "lead_days": {
+        "start": 1,
+        "end": 30
+      },
+      "target_window_start": "2017-07-15",
+      "target_window_end": "2017-08-13",
+      "candidate_previous_years": [
+        2008,
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "n_candidate_previous_years": 9,
+      "training_years": [
+        2008,
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "n_valid_training_years": 9,
+      "minimum_training_years": 3,
+      "is_valid": true,
+      "predicted_mean_temperature": 18.281919322420634,
+      "historical_window_standard_deviation": 1.4760282582098911,
+      "spread_interpretation": "descriptive sample standard deviation; not a calibrated probabilistic forecast",
+      "unit": "degC",
+      "site": {
+        "lake_id": "windermere",
+        "basin": "south"
+      },
+      "variable": "water_temperature",
+      "depth_m": 2.0,
+      "training_windows": [
+        {
+          "year": 2008,
+          "start_date": "2008-07-15",
+          "end_date": "2008-08-13",
+          "valid_days": 30,
+          "mean_temperature": 17.424666666666667
+        },
+        {
+          "year": 2009,
+          "start_date": "2009-07-15",
+          "end_date": "2009-08-13",
+          "valid_days": 30,
+          "mean_temperature": 17.367126388888888
+        },
+        {
+          "year": 2010,
+          "start_date": "2010-07-15",
+          "end_date": "2010-08-13",
+          "valid_days": 30,
+          "mean_temperature": 17.363822680555554
+        },
+        {
+          "year": 2011,
+          "start_date": "2011-07-15",
+          "end_date": "2011-08-13",
+          "valid_days": 30,
+          "mean_temperature": 19.03188863888889
+        },
+        {
+          "year": 2012,
+          "start_date": "2012-07-15",
+          "end_date": "2012-08-13",
+          "valid_days": 30,
+          "mean_temperature": 16.994592121031747
+        },
+        {
+          "year": 2013,
+          "start_date": "2013-07-15",
+          "end_date": "2013-08-13",
+          "valid_days": 30,
+          "mean_temperature": 21.045895680555557
+        },
+        {
+          "year": 2014,
+          "start_date": "2014-07-15",
+          "end_date": "2014-08-13",
+          "valid_days": 30,
+          "mean_temperature": 20.113695027777776
+        },
+        {
+          "year": 2015,
+          "start_date": "2015-07-15",
+          "end_date": "2015-08-13",
+          "valid_days": 28,
+          "mean_temperature": 16.940542961309525
+        },
+        {
+          "year": 2016,
+          "start_date": "2016-07-15",
+          "end_date": "2016-08-13",
+          "valid_days": 30,
+          "mean_temperature": 18.255043736111112
+        }
+      ],
+      "training_windows_sha256": "4601de8347a31bc1a97daa87dede50b8b43f6f8a6831c69e849f5041bfe9e887",
+      "calendar_alignment": "same target-window start month/day in each prior year, followed by 30 consecutive UTC dates",
+      "unavailable_february_29_start_years": []
+    },
+    {
+      "target_name": "month_2",
+      "lead_days": {
+        "start": 31,
+        "end": 60
+      },
+      "target_window_start": "2017-08-14",
+      "target_window_end": "2017-09-12",
+      "candidate_previous_years": [
+        2008,
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "n_candidate_previous_years": 9,
+      "training_years": [
+        2008,
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "n_valid_training_years": 9,
+      "minimum_training_years": 3,
+      "is_valid": true,
+      "predicted_mean_temperature": 17.131717790123457,
+      "historical_window_standard_deviation": 0.6434049549888792,
+      "spread_interpretation": "descriptive sample standard deviation; not a calibrated probabilistic forecast",
+      "unit": "degC",
+      "site": {
+        "lake_id": "windermere",
+        "basin": "south"
+      },
+      "variable": "water_temperature",
+      "depth_m": 2.0,
+      "training_windows": [
+        {
+          "year": 2008,
+          "start_date": "2008-08-14",
+          "end_date": "2008-09-12",
+          "valid_days": 30,
+          "mean_temperature": 16.070097222222223
+        },
+        {
+          "year": 2009,
+          "start_date": "2009-08-14",
+          "end_date": "2009-09-12",
+          "valid_days": 30,
+          "mean_temperature": 16.1253375
+        },
+        {
+          "year": 2010,
+          "start_date": "2010-08-14",
+          "end_date": "2010-09-12",
+          "valid_days": 30,
+          "mean_temperature": 17.514910194444443
+        },
+        {
+          "year": 2011,
+          "start_date": "2011-08-14",
+          "end_date": "2011-09-12",
+          "valid_days": 30,
+          "mean_temperature": 17.066142916666667
+        },
+        {
+          "year": 2012,
+          "start_date": "2012-08-14",
+          "end_date": "2012-09-12",
+          "valid_days": 30,
+          "mean_temperature": 17.417319680555554
+        },
+        {
+          "year": 2013,
+          "start_date": "2013-08-14",
+          "end_date": "2013-09-12",
+          "valid_days": 30,
+          "mean_temperature": 17.743182708333332
+        },
+        {
+          "year": 2014,
+          "start_date": "2014-08-14",
+          "end_date": "2014-09-12",
+          "valid_days": 30,
+          "mean_temperature": 17.174467472222222
+        },
+        {
+          "year": 2015,
+          "start_date": "2015-08-14",
+          "end_date": "2015-09-12",
+          "valid_days": 30,
+          "mean_temperature": 17.194226597222222
+        },
+        {
+          "year": 2016,
+          "start_date": "2016-08-14",
+          "end_date": "2016-09-12",
+          "valid_days": 30,
+          "mean_temperature": 17.879775819444443
+        }
+      ],
+      "training_windows_sha256": "73775e73dedd0ab31bef887541328aad18b417131abbb1e0708e070d4e2650af",
+      "calendar_alignment": "same target-window start month/day in each prior year, followed by 30 consecutive UTC dates",
+      "unavailable_february_29_start_years": []
+    },
+    {
+      "target_name": "month_3",
+      "lead_days": {
+        "start": 61,
+        "end": 90
+      },
+      "target_window_start": "2017-09-13",
+      "target_window_end": "2017-10-12",
+      "candidate_previous_years": [
+        2008,
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "n_candidate_previous_years": 9,
+      "training_years": [
+        2008,
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "n_valid_training_years": 9,
+      "minimum_training_years": 3,
+      "is_valid": true,
+      "predicted_mean_temperature": 14.94940161574074,
+      "historical_window_standard_deviation": 0.8515271408954612,
+      "spread_interpretation": "descriptive sample standard deviation; not a calibrated probabilistic forecast",
+      "unit": "degC",
+      "site": {
+        "lake_id": "windermere",
+        "basin": "south"
+      },
+      "variable": "water_temperature",
+      "depth_m": 2.0,
+      "training_windows": [
+        {
+          "year": 2008,
+          "start_date": "2008-09-13",
+          "end_date": "2008-10-12",
+          "valid_days": 30,
+          "mean_temperature": 14.028518055555555
+        },
+        {
+          "year": 2009,
+          "start_date": "2009-09-13",
+          "end_date": "2009-10-12",
+          "valid_days": 30,
+          "mean_temperature": 14.465104166666666
+        },
+        {
+          "year": 2010,
+          "start_date": "2010-09-13",
+          "end_date": "2010-10-12",
+          "valid_days": 30,
+          "mean_temperature": 15.068286958333333
+        },
+        {
+          "year": 2011,
+          "start_date": "2011-09-13",
+          "end_date": "2011-10-12",
+          "valid_days": 30,
+          "mean_temperature": 14.593987555555556
+        },
+        {
+          "year": 2012,
+          "start_date": "2012-09-13",
+          "end_date": "2012-10-12",
+          "valid_days": 30,
+          "mean_temperature": 13.88612948611111
+        },
+        {
+          "year": 2013,
+          "start_date": "2013-09-13",
+          "end_date": "2013-10-12",
+          "valid_days": 30,
+          "mean_temperature": 14.612673472222223
+        },
+        {
+          "year": 2014,
+          "start_date": "2014-09-13",
+          "end_date": "2014-10-12",
+          "valid_days": 30,
+          "mean_temperature": 16.227606430555557
+        },
+        {
+          "year": 2015,
+          "start_date": "2015-09-13",
+          "end_date": "2015-10-12",
+          "valid_days": 30,
+          "mean_temperature": 15.561851347222222
+        },
+        {
+          "year": 2016,
+          "start_date": "2016-09-13",
+          "end_date": "2016-10-12",
+          "valid_days": 30,
+          "mean_temperature": 16.100457069444445
+        }
+      ],
+      "training_windows_sha256": "ddb6084e316007a53f1c90ff9079ff10447da41a553edfd3f4361329cf912f28",
+      "calendar_alignment": "same target-window start month/day in each prior year, followed by 30 consecutive UTC dates",
+      "unavailable_february_29_start_years": []
+    }
+  ],
+  "provenance": {
+    "forecast_state_input": "outputs\\forecast_states\\summer_2017_intraday\\forecast_state.json",
+    "forecast_state_sha256": "597e900e669e7738bff6dfa3dd2b910cd5a7ef8277dbf8d9980c324ae4265093",
+    "canonical_inputs": [
+      "data\\interim\\bd37710e-canonical.csv",
+      "data\\interim\\e1b6e387-canonical.csv",
+      "data\\interim\\e68063b9-canonical.csv"
+    ],
+    "eligible_training_observation_slice_sha256": "13a12948d0f2c07c4644fed1bd439fbcdb2f7f3f5995869fee2aff78dc6f42d4",
+    "source_dataset_ids": [
+      "bd37710e-6a53-49f0-9a07-6973408a3342",
+      "e1b6e387-1bd6-444a-8de9-035df0b8baec",
+      "e68063b9-2e52-44df-8b6f-a3deb37b76cb"
+    ],
+    "source_files": [
+      "SBAS_2012_2013_2014_2015.csv",
+      "WSB_2008_2009_2010_2011.csv",
+      "sbas-2016_2017_2018.csv"
+    ],
+    "training_observation_rule": "observation calendar year < 2017",
+    "daily_completeness_rule": "at least 18 distinct valid hourly observations per UTC calendar day; no imputation",
+    "forecast_record_sha256": "92a2b71a6ecc9d482a0a22540006a36d44316de531203f4bf0349a2300d0d0b0",
+    "source_timestamps_preserved": true,
+    "leakage_note": "Forecast-year and later observations are filtered before daily aggregation and are not hashed into forecast provenance."
+  }
+}

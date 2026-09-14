@@ -1,0 +1,14 @@
+{
+  "component_name": "standardise_observations",
+  "purpose": "Parse EIDC buoy CSV releases and emit a traceable canonical long observation table and inventory.",
+  "required_inputs": ["source_csv", "dataset_id", "canonical_output", "inventory_output"],
+  "optional_inputs": ["data_available_time"],
+  "parameters": {"data_available_time": "ISO-8601 timestamp, omitted when unknown"},
+  "outputs": ["canonical observation CSV", "JSON source inventory"],
+  "data_formats": ["CSV", "JSON"],
+  "expected_units": {"water_temperature": "degC", "air_temperature": "degC", "solar_irradiance": "W m-2", "wind_speed": "m s-1"},
+  "failure_conditions": ["missing two-row header", "inconsistent row width", "unparseable timestamp"],
+  "provenance_generated": ["source dataset", "source file", "source row", "data availability note", "missingness counts"],
+  "scientific_assumptions": ["source GMT is represented as UTC", "blank source cells are missing and omitted from the long table", "QC is not invented", "source timestamps are observation times"],
+  "entry_point": "components/standardise_observations/run.py"
+}

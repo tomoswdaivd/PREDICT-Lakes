@@ -1,0 +1,53 @@
+{
+  "inventory_version": "0.1",
+  "retrieved_on": "2026-09-14",
+  "purpose": "Initial inventory of UKCEH/EIDC Windermere South Basin automatic-buoy releases",
+  "licence": "Open Government Licence",
+  "download_pattern": "https://data-package.ceh.ac.uk/data/<dataset_id>.zip",
+  "datasets": [
+    {
+      "dataset_id": "bd37710e-6a53-49f0-9a07-6973408a3342",
+      "doi": "10.5285/bd37710e-6a53-49f0-9a07-6973408a3342",
+      "coverage": "2008-01-01/2011-12-31 (observed file ends 2012-01-01 00:00 GMT)",
+      "archive_sha256": "59dd60a64313a53bab96024079989b193c4fd46051f1b5f194b761c23b1d15d0",
+      "original_csv": "WSB_2008_2009_2010_2011.csv",
+      "csv_sha256": "62fc0fa17cd1b1e27960899a820a0af37cc53f87882a08f073b7e0106679cb0d",
+      "rows": 35064,
+      "schema": "Date GMT plus Water temperature at 1,2,4,7,10,13,16,19,22,25,30,35m; Air Temperature; Pyranometer; Wind Speed",
+      "missing_counts": {"water_temperature_1m_to_35m": 226, "air_temperature": 226, "pyranometer": 226, "wind_speed": 686},
+      "duplicates": 0,
+      "notes": "Units documented as degC, W m-2, and m s-1; source timestamps are GMT."
+    },
+    {
+      "dataset_id": "e68063b9-2e52-44df-8b6f-a3deb37b76cb",
+      "doi": "10.5285/e68063b9-2e52-44df-8b6f-a3deb37b76cb",
+      "coverage": "2012-01-01/2015-12-31 (observed file ends 2016-01-01 00:00 GMT)",
+      "archive_sha256": "1cf6d423d61de8d1968b61bfabe51fef03b003add93552492e08ad22e5dffa47",
+      "original_csv": "SBAS_2012_2013_2014_2015.csv",
+      "csv_sha256": "342b6eafc54b00672c205652e2374a8ddc2a8f471efa1a9714da609105067b64",
+      "rows": 35064,
+      "schema": "Date_GMT plus underscore-named Water_temperature at 1,2,4,7,10,13,16,19,22,25,30,35m; Air_Temperature; Pyranometer; Wind_Speed",
+      "missing_counts": {"water_temperature_1m": 3833, "water_temperature_other_depths": "79-121", "air_temperature": 55, "pyranometer": 55, "wind_speed": 79},
+      "duplicates": 0,
+      "notes": "Schema naming differs from the other two releases; units documented as degC, W m-2, and m s-1."
+    },
+    {
+      "dataset_id": "e1b6e387-1bd6-444a-8de9-035df0b8baec",
+      "doi": "10.5285/e1b6e387-1bd6-444a-8de9-035df0b8baec",
+      "coverage": "2016-01-01/2018-12-31 (observed file ends 2019-01-01 00:00 GMT)",
+      "archive_sha256": "5c077ea04950caf81540aaf88726184b5dbd387d25f9acd8a357439f6978113f",
+      "original_csv": "sbas-2016_2017_2018.csv",
+      "csv_sha256": "fa2dd4ab9945029f66e20653b61d29c8b64c1a1922235ee0cac76ba731cc6af4",
+      "rows": 26304,
+      "schema": "Date GMT plus Water temperature at 1,2,4,7,10,13,16,19,22,25,30,35m; Air Temperature; Pyranometer; Wind Speed",
+      "missing_counts": {"water_temperature_1m": 26304, "water_temperature_2m_to_4m": 8, "water_temperature_7m": 9, "water_temperature_10m": 10, "water_temperature_13m": 9, "water_temperature_16m": 234, "water_temperature_19m": 265, "water_temperature_22m": 46, "water_temperature_25m": 772, "water_temperature_30m": 8, "water_temperature_35m": 800, "air_temperature": 7, "pyranometer": 10, "wind_speed": 1800},
+      "duplicates": 0,
+      "notes": "The 1m series is entirely missing; source page explicitly states GMT and hourly averages from four-minute measurements."
+    }
+  ],
+  "availability": {
+    "historical_data_available_time": null,
+    "limitation": "EIDC archives do not provide historical data-availability timestamps; the pipeline records null and never substitutes retrieval time.",
+    "post_2018_finding": "Catalogue search found lower-frequency Windermere South Basin surface-monitoring records for 2019-2025, but no additional automatic-buoy block. These are not substituted."
+  }
+}

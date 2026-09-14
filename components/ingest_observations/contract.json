@@ -1,0 +1,14 @@
+{
+  "component_name": "ingest_observations",
+  "purpose": "Acquire or register source observation packages without modifying raw files.",
+  "required_inputs": ["source", "dataset_id", "raw_dir", "manifest_path"],
+  "optional_inputs": ["source_url", "licence", "retrieval_date"],
+  "parameters": {"source": "local path or URL", "dataset_id": "string identifier", "raw_dir": "relative/configurable directory", "manifest_path": "JSON path"},
+  "outputs": ["immutable raw copy", "JSON provenance manifest"],
+  "data_formats": ["source-preserving archive/file", "JSON"],
+  "expected_units": "unchanged from source",
+  "failure_conditions": ["missing source", "destination already exists", "download/copy failure"],
+  "provenance_generated": ["source", "retrieval_date", "filename", "sha256", "licence", "data_available_time"],
+  "scientific_assumptions": ["raw source files are never edited", "historical availability time is unknown unless explicitly supplied"],
+  "entry_point": "components/ingest_observations/run.py"
+}
